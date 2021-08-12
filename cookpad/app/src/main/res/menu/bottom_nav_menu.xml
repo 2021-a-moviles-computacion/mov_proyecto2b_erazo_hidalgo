@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/str_empty"
+        android:id="@+id/ic_home"
+        android:icon="@drawable/home_bnm_foreground"/>
+    <item android:title="@string/str_empty"
+        android:id="@+id/ic_search"
+        android:icon="@drawable/search_bnm_foreground"/>
+    <item
+        android:id="@+id/ic_add"
+        android:icon="@drawable/add_bnm_foreground"
+        android:title="@string/str_empty" />
+    <item android:title="@string/str_empty"
+        android:id="@+id/ic_message"
+        android:icon="@drawable/message_bnm_foreground"/>
+    <item android:title="@string/str_empty"
+        android:id="@+id/ic_account"
+        android:icon="@drawable/account_bnm_foreground"/>
+</menu>

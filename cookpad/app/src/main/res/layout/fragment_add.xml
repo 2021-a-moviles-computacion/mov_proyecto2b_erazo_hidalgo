@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="260dp"
+        android:layout_height="207dp"
+        android:src="@drawable/cookpad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <TextView
+        android:id="@+id/tv_titulo_fragment_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="90dp"
+        android:text="@string/str_crea_algo_nuevo"
+        android:textColor="@color/colorTituloReceta"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tv_subtitulo_fragment_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/str_ayuda_ins_otros"
+        app:layout_constraintEnd_toEndOf="@+id/tv_titulo_fragment_add"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/tv_titulo_fragment_add"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_fragment_add" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="188dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="56dp"
+        app:chipSpacingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_subtitulo_fragment_add"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/tv_subtitulo_fragment_add"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtitulo_fragment_add"
+        app:singleLine="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_receta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:text="@string/str_receta"
+            android:textColor="@color/colorWhite"
+            app:chipBackgroundColor="@color/colorTituloReceta"
+            app:chipIcon="@mipmap/document_icon_foreground"
+            app:chipIconTint="@color/colorWhite"
+            app:shapeAppearanceOverlay="@style/circular_25" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_truco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_truco"
+            android:textColor="@color/colorWhite"
+            app:chipBackgroundColor="@color/colorTituloReceta"
+            app:chipIcon="@mipmap/idea_icon_foreground"
+            app:chipIconTint="@color/colorWhite"
+            app:shapeAppearanceOverlay="@style/circular_25" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

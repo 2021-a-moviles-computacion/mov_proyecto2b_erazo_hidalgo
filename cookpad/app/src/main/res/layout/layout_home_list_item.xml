@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_usuario1"
+                android:layout_alignParentLeft="true"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:padding="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usuario1" />
+
+            <TextView
+                android:id="@+id/tv_nombre_autor_recete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/img_usuario1"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/str_nombre_autor_receta"
+                android:textColor="@color/colorNombreAutorReceta"
+                android:textSize="15sp" />
+
+            <ImageButton
+                android:id="@+id/stripe_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@null"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="2dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_three_dots_vertical" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/img_receta"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/receta_fideos" />
+
+        <TextView
+            android:id="@+id/et_titulo_receta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/str_titulo_receta"
+            android:textColor="@color/colorTituloReceta"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            app:chipSpacingHorizontal="0dp"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_truco"
+                style="@style/ThinnerChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+
+                android:text="0"
+                app:chipIcon="@mipmap/clapping_hands_icon_foreground" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_3"
+                style="@style/ThinnerChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                app:chipIcon="@mipmap/heart_icon_foreground" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
