@@ -1,8 +1,11 @@
 package com.ferrifrancis.cookpad.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
@@ -40,12 +43,25 @@ class AccountTusRecetasRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHo
     ): RecyclerView.ViewHolder(itemView){
         val imagenReceta = itemView.imagen_tus_recetas
         val tituloReceta = itemView.et_titulo_receta
-
+        val botonImagen: ImageButton = itemView.ib_menu_tusrecetas
 
         fun bind(home : Home)
         {
             tituloReceta.setText(home.tituloReceta)
             imagenReceta.setImageResource(home.imagenReceta)
+
+            botonImagen.setOnClickListener{
+                popupMenu(it)
+            }
         }
+
+        fun popupMenu(v: View) {
+            Log.i("popup-menu","popupmenu funcion")
+            val popupMenu = PopupMenu(v.getContext(), v)
+            popupMenu.inflate(R.menu.menu_account_mireceta)
+            popupMenu.show()
+
+        }
+
     }
 }

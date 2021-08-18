@@ -19,6 +19,14 @@
     <string name="str_guardar">Guardar</string>
     <string name="str_reportar_receta">Reportar receta</string>
 
+    <string name="str_anadir_ingr">Añadir ingrediente</string>
+    <string name="str_borrar_ingr">Borrar este ingrediente</string>
+
+    <string name="str_anadir_paso">Añadir paso</string>
+    <string name="str_borrar_paso">Borrar este paso</string>
+
+    <string name="str_borrar_receta">Borrar receta</string>
+
     <string name="formulario_receta_titulo">Título. Ej: Pollo al horno</string>
     <string name="formulario_receta_descripcion">¿Cuál es la historia de tu \nreceta, en quién te inspiraste,\n es especial para ti, para \n quién cocinaste?</string>
     <string name="formulario_receta_procedencia">Añade la procedencia de tu \nreceta</string>
@@ -32,6 +40,7 @@
 
     <string name="formulario_truco_tit_descrp">Título: Cómo picar una cebolla</string>
     <string name="formulario_truco_descrp_truco">Para picar una cebolla, usa el \ncuchillo cocinero y corta la \ncebolla por la mitad desde la \npunta del tallo hasta la \nraiz inferior</string>
+
 
 
 </resources>

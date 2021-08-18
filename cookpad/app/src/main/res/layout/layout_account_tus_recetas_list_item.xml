@@ -21,8 +21,10 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            android:background="#26000000"
             android:src="@drawable/donas" />
         <ImageButton
+            android:id="@+id/ib_menu_tusrecetas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

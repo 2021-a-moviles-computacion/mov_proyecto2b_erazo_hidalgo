@@ -1,11 +1,14 @@
 package com.ferrifrancis.cookpad
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.PopupMenu
 
 class CrearReceta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +16,7 @@ class CrearReceta : AppCompatActivity() {
         setContentView(R.layout.activity_crear_receta)
 
         // calling the action bar
-        var actionBar = getSupportActionBar()
+        val actionBar = getSupportActionBar()
 
         // showing the back button in action bar
         if (actionBar != null) {
@@ -21,6 +24,36 @@ class CrearReceta : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setDisplayShowHomeEnabled(true)
         }
+
+        val dotMenuIngr1 = findViewById<ImageView>(R.id.img_three_dots_menu_secc_ingr)
+        val dotMenuIngr2 = findViewById<ImageView>(R.id.img_three_dots_menu2_secc_ingr)
+        val dotMenuPasos = findViewById<ImageView>(R.id.img_three_dots_menu_secc_pasos)
+
+        dotMenuIngr1.setOnClickListener {
+            setPopupMenuIngrediente(dotMenuIngr1)
+        }
+
+        dotMenuIngr2.setOnClickListener {
+            setPopupMenuIngrediente(dotMenuIngr2)
+        }
+
+        dotMenuPasos.setOnClickListener {
+            setPopupMenuPaso(dotMenuPasos)
+        }
+    }
+
+    fun setPopupMenuIngrediente(imagen: ImageView)
+    {
+        val popupMenu = PopupMenu(this, imagen)
+        popupMenu.inflate(R.menu.menu_add_ingrediente)
+        popupMenu.show()
+    }
+
+    fun setPopupMenuPaso(imagen: ImageView)
+    {
+        val popupMenu = PopupMenu(this, imagen)
+        popupMenu.inflate(R.menu.menu_add_paso)
+        popupMenu.show()
     }
 
     override fun onSupportNavigateUp(): Boolean {
