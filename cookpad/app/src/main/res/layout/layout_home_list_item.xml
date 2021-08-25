@@ -27,7 +27,6 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:padding="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/usuario1" />
 
@@ -95,12 +94,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
-
                 android:text="0"
                 app:chipIcon="@mipmap/clapping_hands_icon_foreground" />
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_3"
+                android:id="@+id/chip_corazon"
                 style="@style/ThinnerChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
