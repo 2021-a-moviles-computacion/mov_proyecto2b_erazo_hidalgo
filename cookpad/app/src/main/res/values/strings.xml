@@ -41,6 +41,14 @@
     <string name="formulario_truco_tit_descrp">Título: Cómo picar una cebolla</string>
     <string name="formulario_truco_descrp_truco">Para picar una cebolla, usa el \ncuchillo cocinero y corta la \ncebolla por la mitad desde la \npunta del tallo hasta la \nraiz inferior</string>
 
-
+    <!--Login y registro-->
+    <string name="str_email">Email</string>
+    <string name="str_contraseña">Contraseña</string>
+    <string name="str_iniciar_sesion">Iniciar Sesión</string>
+    <string name="str_registrarse">Registrarse</string>
+    <string name="str_nombre_usuario">Nombre</string>
+    <string name="str_sexo">Sexo</string>
+    <string name="str_fem">Femenino</string>
+    <string name="str_mas">Masculino</string>
 
 </resources>

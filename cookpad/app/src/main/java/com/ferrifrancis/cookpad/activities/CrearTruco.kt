@@ -1,10 +1,11 @@
-package com.ferrifrancis.cookpad
+package com.ferrifrancis.cookpad.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.widget.ImageView
 import android.widget.PopupMenu
+import com.ferrifrancis.cookpad.R
 
 class CrearTruco : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,13 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import com.ferrifrancis.cookpad.CrearReceta
-import com.ferrifrancis.cookpad.CrearTruco
-import com.ferrifrancis.cookpad.MainActivity
+import com.ferrifrancis.cookpad.activities.CrearReceta
+import com.ferrifrancis.cookpad.activities.CrearTruco
 import com.ferrifrancis.cookpad.R
-import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_add.*
 
 

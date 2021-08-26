@@ -1,14 +1,11 @@
-package com.ferrifrancis.cookpad
+package com.ferrifrancis.cookpad.activities
 
-import android.content.Intent
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.PopupMenu
+import com.ferrifrancis.cookpad.R
 
 class CrearReceta : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,11 +1,11 @@
-package com.ferrifrancis.cookpad
+package com.ferrifrancis.cookpad.activities
 
-import android.accounts.Account
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -1,11 +1,10 @@
 package com.ferrifrancis.cookpad.fragments
 
 import android.os.Bundle
-<<<<<<< HEAD
-=======
+
 import android.util.Log
 import android.view.ContextMenu
->>>>>>> main
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

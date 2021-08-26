@@ -9,15 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".adapter.VerRecetaRecyclerAdapter"></activity>
-        <activity android:name=".CrearTruco" />
-        <activity android:name=".fragments.CrearTruco" />
-=======
-        <activity android:name=".CrearTruco"></activity>
->>>>>>> main
-        <activity android:name=".CrearReceta" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".activities.CrearReceta" />
+        <activity android:name=".activities.RegistrarseActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
