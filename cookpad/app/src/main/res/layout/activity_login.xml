@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="50dp"
     android:layout_marginEnd="50dp"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="30dp"
     android:orientation="vertical"
     tools:context=".activities.LoginActivity">
 
@@ -14,14 +14,14 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/cookpad_logo"/>
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/str_email"
         android:inputType="textEmailAddress" />
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:hint="@string/str_contraseña" />
 
     <Button
@@ -44,7 +44,6 @@
         android:id="@+id/btn_registrarse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPlomoClaro"
         android:text="@string/str_registrarse" />
 
 
