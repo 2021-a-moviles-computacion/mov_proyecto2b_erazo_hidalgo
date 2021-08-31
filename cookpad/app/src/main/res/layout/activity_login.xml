@@ -21,16 +21,16 @@
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="@string/str_email" />
+        android:hint="@string/str_email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/et_constrasenia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:layout_marginBottom="50dp"
         android:hint="@string/str_contraseña" />
 

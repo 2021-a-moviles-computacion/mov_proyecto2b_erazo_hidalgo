@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "591405720730",
+    "project_id": "cookpad-erazo-hidalgo-a18be",
+    "storage_bucket": "cookpad-erazo-hidalgo-a18be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591405720730:android:f379e74fac3a2e439cab23",
+        "android_client_info": {
+          "package_name": "com.ferrifrancis.cookpad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591405720730-o20mu2r7hr9avrmg89773lubga9svt5j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzFLeOgVoJEcriTePzfxqu3kWxV0XxteQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591405720730-o20mu2r7hr9avrmg89773lubga9svt5j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
