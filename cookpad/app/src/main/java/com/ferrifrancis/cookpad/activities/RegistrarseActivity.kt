@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.data.PaisData
+import com.ferrifrancis.cookpad.dto.UsuarioDTO
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -21,6 +22,8 @@ class RegistrarseActivity : AppCompatActivity(){
 
     private lateinit var auth: FirebaseAuth
     private lateinit var listaPaises: Spinner
+    val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
+    var usuario: UsuarioDTO?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +51,10 @@ class RegistrarseActivity : AppCompatActivity(){
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
                                 Toast.makeText(this,"Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
                                 val usuarioLogeado: FirebaseUser? = FirebaseAuth.getInstance().getCurrentUser()
-
                                 registrarUsuarioEnColeccion(usuarioLogeado)
-                                abrirActividad(MainActivity::class.java)
+                                Log.i("usuario","${usuarioLogeado}")
+                                abrirActividadConParametros(MainActivity::class.java, this.usuario!!)
+
                             }
                             else
                             {
@@ -65,6 +69,17 @@ class RegistrarseActivity : AppCompatActivity(){
             }
 
         }
+    }
+    fun abrirActividadConParametros(
+        clase: Class<*>,
+        usuario: UsuarioDTO,
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase
+        )
+        intentExplicito.putExtra("usuario",usuario)
+        startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }
 
     fun registrarUsuarioEnColeccion(usuarioLogeado: FirebaseUser?)
@@ -83,6 +98,14 @@ class RegistrarseActivity : AppCompatActivity(){
 
         if(uid != null && email != null && nombre != null && sexo != null && pais != null) {
             Log.i("firebase-firestore","todos los campos no son nulos")
+            this.usuario= UsuarioDTO(
+                uid,
+                email,
+                nombre,
+                pais,
+                sexo,
+             //   roles
+            )
             val nuevoUsuario = hashMapOf<String, Any>(
                 "uid" to uid,
                 "email" to email,

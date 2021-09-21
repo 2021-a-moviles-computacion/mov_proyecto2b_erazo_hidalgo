@@ -89,11 +89,12 @@
             app:singleLine="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_truco"
+                android:id="@+id/chip_aplauso"
                 style="@style/ThinnerChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
+                android:inputType="text"
                 android:text="0"
                 app:chipIcon="@mipmap/clapping_hands_icon_foreground" />
 

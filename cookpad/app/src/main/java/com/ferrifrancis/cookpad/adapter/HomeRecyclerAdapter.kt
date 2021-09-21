@@ -61,7 +61,7 @@ class HomeRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         val imagenAutorReceta = itemView.img_usuario1
         val stripeMenu = itemView.stripe_menu
-        val chipAplauso = itemView.chip_truco
+        val chipAplauso = itemView.chip_aplauso
         val chipCorazon = itemView.chip_corazon
 
 

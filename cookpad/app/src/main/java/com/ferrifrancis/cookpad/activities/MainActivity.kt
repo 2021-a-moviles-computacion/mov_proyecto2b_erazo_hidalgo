@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         replaceFragment(homeFragment)
 
 
+
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.ic_home -> {replaceFragment(homeFragment)

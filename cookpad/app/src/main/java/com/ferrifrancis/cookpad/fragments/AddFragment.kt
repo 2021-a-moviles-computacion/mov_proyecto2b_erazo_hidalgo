@@ -40,7 +40,7 @@ class AddFragment : Fragment() {
             abrirActividad(CrearReceta::class.java)
             Toast.makeText(context, "This is chip1", Toast.LENGTH_SHORT).show()
         }
-        chip_truco.setOnClickListener {
+        chip_aplauso.setOnClickListener {
             abrirActividad(CrearTruco::class.java)
             Toast.makeText(context, "This is chip2", Toast.LENGTH_SHORT).show()
         }
