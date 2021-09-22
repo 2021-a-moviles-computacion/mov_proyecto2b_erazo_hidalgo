@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.CrearReceta"></activity>
+        <activity android:name=".activities.CrearTruco"></activity>
         <activity android:name=".fragments.CrearRecetaFragment" />
         <activity android:name=".fragments.IngredientsFragment" />
         <activity android:name=".activities.RegistrarseActivity" />

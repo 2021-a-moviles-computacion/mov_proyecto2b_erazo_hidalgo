@@ -61,6 +61,11 @@ class CrearReceta : AppCompatActivity() {
 
             Toast.makeText(this,"Se ha guardado la receta", Toast.LENGTH_SHORT).show()
         }
+
+        val imgenReceta = findViewById<ImageView>(R.id.img_receta)
+        imgenReceta.setOnClickListener {
+
+        }
     }
 
     fun setPopupMenuIngrediente(imagen: ImageView)
