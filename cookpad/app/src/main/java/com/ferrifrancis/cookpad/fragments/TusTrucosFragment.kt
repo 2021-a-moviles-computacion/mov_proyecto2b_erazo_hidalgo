@@ -46,7 +46,7 @@ class TusTrucosFragment : Fragment() {
     {
         rv_tus_trucos.apply {
             rv_tus_trucos.layoutManager = GridLayoutManager(activity,2)
-            homeAdapter = HomeRecyclerAdapter()
+            //homeAdapter = HomeRecyclerAdapter()
             rv_tus_trucos.adapter = homeAdapter
         }
     }

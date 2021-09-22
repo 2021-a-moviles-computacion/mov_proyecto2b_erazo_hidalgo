@@ -158,7 +158,8 @@ class CrearReceta : AppCompatActivity() {
             paso3.text.toString(),
             paso4.text.toString(),
             aplauso,
-            corazon
+            corazon,
+            usuario!!.nombre
 
         )
         val nuevaReceta = hashMapOf<String, Any>(
@@ -173,7 +174,8 @@ class CrearReceta : AppCompatActivity() {
             "paso3" to objetoRecetaDTO.paso3!!,
             "paso4" to objetoRecetaDTO.paso4!!,
              "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
-            "reaccionCorazon" to objetoRecetaDTO.reaccionCorazon!!
+            "reaccionCorazon" to objetoRecetaDTO.reaccionCorazon!!,
+            "nombreUsuarioAutor" to objetoRecetaDTO.nombreUsuario!!
 
 
 

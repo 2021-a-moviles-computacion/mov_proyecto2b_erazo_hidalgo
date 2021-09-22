@@ -4,19 +4,20 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class RecetaDTO(
-    var uid: String?,
-    var uid_usuario:String?,
-    var tituloReceta: String?,
-    var descripcionReceta: String?,
-    var procedimientoReceta: String?,
-    var comensales: Int?,
-    var tiempoElaboracion: String?,
-    var paso1: String?,
-    var paso2: String?,
-    var paso3: String?,
-    var paso4: String?,
-    var reaccionAplauso: Int?,
-    var reaccionCorazon: Int?
+    var uid_receta: String? = null,
+    var uid_usuario:String?= null,
+    var tituloReceta: String?= null,
+    var descripcionReceta: String?= null,
+    var procedimientoReceta: String?= null,
+    var comensales: Int?= null,
+    var tiempoElaboracion: String?= null,
+    var paso1: String?= null,
+    var paso2: String?= null,
+    var paso3: String?= null,
+    var paso4: String?= null,
+    var reaccionAplauso: Int?= null,
+    var reaccionCorazon: Int?= null,
+    val nombreUsuario: String?= null
 
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -33,16 +34,16 @@ class RecetaDTO(
         parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
 
-        parcel.readValue(Int::class.java.classLoader) as? Int
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString()
     ) {
     }
 
     override fun describeContents(): Int {
         TODO("Not yet implemented")
     }
-
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(uid)
+        parcel.writeString(uid_receta)
         parcel.writeString(uid_usuario)
         parcel.writeString(tituloReceta)
         parcel.writeString(descripcionReceta)
@@ -54,8 +55,8 @@ class RecetaDTO(
         parcel.writeString(paso3)
         parcel.writeString(paso4)
         parcel.writeInt(reaccionAplauso!!)
-
         parcel.writeInt(reaccionCorazon!!)
+        parcel.writeString(nombreUsuario)
     }
 
     companion object CREATOR : Parcelable.Creator<RecetaDTO> {

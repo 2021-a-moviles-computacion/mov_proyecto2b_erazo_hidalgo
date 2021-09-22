@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.data.Data
+import com.ferrifrancis.cookpad.dto.RecetaDTO
 import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 
 
-class HomeRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
+    RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
     private var items: List<Home> = ArrayList()
     //private lateinit var  mListener: onItemClickListener
 
@@ -27,39 +29,57 @@ class HomeRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
        // mListener = listener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return HomeViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_home_list_item,
-                parent,
-                false
-            )/*, mListener*/
-        )
+    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+        val receta : RecetaDTO = this.recetaList[position]
+        //holder.imagenReceta.setImageResource(receta.)
+        holder.tituloReceta.setText(receta.tituloReceta)
+        holder.nombreAutorReceta.setText(receta.nombreUsuario)
+        //holder.imagenAutorReceta.setImageResource(receta.)
+        //holder.stripeMenu
+        holder.chipAplauso.setText(receta.reaccionAplauso.toString())
+        holder.chipCorazon.setText(receta.reaccionCorazon.toString())
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_home_list_item,parent, false)
+        return HomeViewHolder(itemView)
+    }
+
+
+    /*
+    override fun onBindViewHolder(holder: HomeRecyclerAdapter.HomeViewHolder, position: Int) {
+        val receta : RecetaDTO = this.recetaList[position]
+        //holder.imagenReceta.setImageResource(receta.)
+        holder.tituloReceta.setText(receta.tituloReceta)
+        holder.nombreAutorReceta.setText(receta.nombreUsuario)
+        //holder.imagenAutorReceta.setImageResource(receta.)
+        //holder.stripeMenu
+        holder.chipAplauso.setText(receta.reaccionAplauso.toString())
+        holder.chipCorazon.setText(receta.reaccionCorazon.toString())
+        /*
         when (holder) {
             is HomeViewHolder -> {
                 holder.bind(items.get(position))
             }
         }
+        */
     }
-
+*/
     fun submitList(homeList: List<Home>) {
         items = homeList
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return this.recetaList.size
     }
 
     class HomeViewHolder constructor(
         itemView: View/*, listener: onItemClickListener*/
     ) : RecyclerView.ViewHolder(itemView) {
-        val imagenReceta = itemView.img_receta
+        //val imagenReceta = itemView.img_receta
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
-        val imagenAutorReceta = itemView.img_usuario1
+        //val imagenAutorReceta = itemView.img_usuario1
         val stripeMenu = itemView.stripe_menu
         val chipAplauso = itemView.chip_aplauso
         val chipCorazon = itemView.chip_corazon
@@ -90,8 +110,8 @@ class HomeRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(home: Home) {
             tituloReceta.setText(home.tituloReceta)
             nombreAutorReceta.setText(home.nombreAutorReceta)
-            imagenReceta.setImageResource(home.imagenReceta)
-            imagenAutorReceta.setImageResource(home.imagenAutor)
+            //imagenReceta.setImageResource(home.imagenReceta)
+            //imagenAutorReceta.setImageResource(home.imagenAutor)
             chipAplauso.setText(home.reaccionAplauso.toString())
             chipCorazon.setText(home.reaccionCorazon.toString())
 
@@ -126,4 +146,7 @@ class HomeRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
         */
     }
+
+
+
 }
