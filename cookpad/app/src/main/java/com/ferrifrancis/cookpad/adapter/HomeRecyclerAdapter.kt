@@ -33,7 +33,7 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
         val receta : RecetaDTO = this.recetaList[position]
         //holder.imagenReceta.setImageResource(receta.)
         holder.tituloReceta.setText(receta.tituloReceta)
-        holder.nombreAutorReceta.setText(receta.nombreUsuario)
+        holder.nombreAutorReceta.setText(receta.nombreUsuarioAutor)
         //holder.imagenAutorReceta.setImageResource(receta.)
         //holder.stripeMenu
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())

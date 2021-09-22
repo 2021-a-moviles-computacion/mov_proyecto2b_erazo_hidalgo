@@ -7,11 +7,8 @@ import android.util.Log
 import android.view.Menu
 import android.widget.*
 import com.ferrifrancis.cookpad.R
-import com.ferrifrancis.cookpad.dto.IngredienteDTO
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.ferrifrancis.cookpad.dto.UsuarioDTO
-import com.ferrifrancis.cookpad.fragments.HomeFragment
-import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -175,7 +172,7 @@ class CrearReceta : AppCompatActivity() {
             "paso4" to objetoRecetaDTO.paso4!!,
              "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
             "reaccionCorazon" to objetoRecetaDTO.reaccionCorazon!!,
-            "nombreUsuarioAutor" to objetoRecetaDTO.nombreUsuario!!
+            "nombreUsuarioAutor" to objetoRecetaDTO.nombreUsuarioAutor!!
 
 
 

@@ -17,7 +17,7 @@ class RecetaDTO(
     var paso4: String?= null,
     var reaccionAplauso: Int?= null,
     var reaccionCorazon: Int?= null,
-    val nombreUsuario: String?= null
+    val nombreUsuarioAutor: String?= null
 
 ):Parcelable {
     constructor(parcel: Parcel) : this(
@@ -56,7 +56,7 @@ class RecetaDTO(
         parcel.writeString(paso4)
         parcel.writeInt(reaccionAplauso!!)
         parcel.writeInt(reaccionCorazon!!)
-        parcel.writeString(nombreUsuario)
+        parcel.writeString(nombreUsuarioAutor)
     }
 
     companion object CREATOR : Parcelable.Creator<RecetaDTO> {
