@@ -39,7 +39,7 @@ class TusTrucosFragment : Fragment() {
     private fun addDataSet()
     {
         val data = Data.createDataSetHome()
-        homeAdapter.submitList(data)
+        //homeAdapter.submitList(data)
     }
 
     private fun initRecyclerView()

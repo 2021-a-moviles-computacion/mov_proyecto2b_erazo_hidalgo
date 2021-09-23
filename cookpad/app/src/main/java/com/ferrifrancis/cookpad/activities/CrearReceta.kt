@@ -188,9 +188,10 @@ class CrearReceta : AppCompatActivity() {
                 crearIngredientes()
                 limpiar()
                 abrirActividadConParametros(MainActivity::class.java,usuario!!)
+                Log.i("firestore","Se creó receta")
             }
             .addOnFailureListener{
-
+                Log.i("firestore","NO Se creó receta")
             }
 
 

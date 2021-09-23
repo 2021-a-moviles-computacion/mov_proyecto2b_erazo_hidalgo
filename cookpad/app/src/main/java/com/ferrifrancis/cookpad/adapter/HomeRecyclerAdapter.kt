@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 
 class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
     RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
-    private var items: List<Home> = ArrayList()
+
     //private lateinit var  mListener: onItemClickListener
 
     interface onItemClickListener{
@@ -45,29 +45,6 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
         return HomeViewHolder(itemView)
     }
 
-
-    /*
-    override fun onBindViewHolder(holder: HomeRecyclerAdapter.HomeViewHolder, position: Int) {
-        val receta : RecetaDTO = this.recetaList[position]
-        //holder.imagenReceta.setImageResource(receta.)
-        holder.tituloReceta.setText(receta.tituloReceta)
-        holder.nombreAutorReceta.setText(receta.nombreUsuario)
-        //holder.imagenAutorReceta.setImageResource(receta.)
-        //holder.stripeMenu
-        holder.chipAplauso.setText(receta.reaccionAplauso.toString())
-        holder.chipCorazon.setText(receta.reaccionCorazon.toString())
-        /*
-        when (holder) {
-            is HomeViewHolder -> {
-                holder.bind(items.get(position))
-            }
-        }
-        */
-    }
-*/
-    fun submitList(homeList: List<Home>) {
-        items = homeList
-    }
 
     override fun getItemCount(): Int {
         return this.recetaList.size
@@ -107,16 +84,6 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
             }
         }
 
-        fun bind(home: Home) {
-            tituloReceta.setText(home.tituloReceta)
-            nombreAutorReceta.setText(home.nombreAutorReceta)
-            //imagenReceta.setImageResource(home.imagenReceta)
-            //imagenAutorReceta.setImageResource(home.imagenAutor)
-            chipAplauso.setText(home.reaccionAplauso.toString())
-            chipCorazon.setText(home.reaccionCorazon.toString())
-
-
-        }
 
         fun popupMenu(v: View) {
             Log.i("home recycler adapter","popupmenu funcion")

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Update blank fragment layout-->
     <SearchView
         android:id="@+id/sv_buscar"
         android:layout_width="match_parent"
@@ -19,7 +19,9 @@
         android:iconifiedByDefault="false"
         android:queryHint="@string/str_buscar_ingrediente_receta"
 
+
         />
+
     <TextView
         android:id="@+id/tv_nombre_autor_recete"
         android:layout_width="wrap_content"

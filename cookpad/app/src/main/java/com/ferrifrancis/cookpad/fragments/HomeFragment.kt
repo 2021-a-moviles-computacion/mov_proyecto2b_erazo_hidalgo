@@ -62,9 +62,6 @@ class HomeFragment : Fragment() {
 
         eventChangeListener()
 
-    //initRecyclerView()
-        //addDataSet()
-  
     }
 
     private fun eventChangeListener() {
@@ -88,30 +85,7 @@ class HomeFragment : Fragment() {
             })
     }
 
-    private fun addDataSet()
-    {
-        listaHome = Data.listaDatos
-        homeAdapter.submitList(listaHome)
-    }
-
-    private fun initRecyclerView()
-    {
-        rv_home.apply {
-            rv_home.layoutManager = GridLayoutManager(activity,2)
-            //homeAdapter = HomeRecyclerAdapter()
-            rv_home.adapter = homeAdapter
-
-        }
 
 
-        homeAdapter.setOnItemClickListener(object : HomeRecyclerAdapter.onItemClickListener {
-            override fun onItemClick(position: Int)
-            {
-                listaHome[position].nombreAutorReceta = "hola"
-                Log.i("home-fragment","${listaHome[position].nombreAutorReceta }")
-                Log.i("home-fragment","posición seleccionada ${position}")
-            }
-        })
 
-    }
 }
