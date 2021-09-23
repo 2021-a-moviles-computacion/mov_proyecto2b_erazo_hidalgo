@@ -140,6 +140,17 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_comenales_receta"
                     app:layout_constraintTop_toTopOf="@+id/tv_comenales_receta"
                     app:layout_constraintVertical_bias="0.529" />
+
+                <Button
+                    android:id="@+id/btn_saveImage"
+                    android:layout_width="27dp"
+                    android:layout_height="29dp"
+                    android:layout_marginTop="116dp"
+                    android:text="ADD"
+                    app:layout_constraintEnd_toEndOf="@+id/img_receta"
+                    app:layout_constraintHorizontal_bias="0.057"
+                    app:layout_constraintStart_toStartOf="@+id/img_receta"
+                    app:layout_constraintTop_toTopOf="@+id/img_receta" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

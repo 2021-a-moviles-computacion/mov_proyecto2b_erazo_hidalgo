@@ -4,12 +4,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.data.Data
 import com.ferrifrancis.cookpad.dto.RecetaDTO
+
 import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 
 
@@ -68,6 +70,7 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
                 listener.onItemClick(adapterPosition)
             }*/
             chipAplauso.setOnClickListener {
+
                 Log.i("home recycler adapter"," posicion item al dar clic en chip ${adapterPosition}")
                 Data.aumentarEn1Reaccion(adapterPosition,0)
                 chipAplauso.setText(Data.listaDatos[adapterPosition].reaccionAplauso.toString());
@@ -112,6 +115,9 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
             contexto.aumentarTotalLikes()
         }
         */
+
+
+
     }
 
 

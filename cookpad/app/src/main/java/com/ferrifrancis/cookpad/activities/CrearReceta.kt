@@ -1,17 +1,33 @@
 package com.ferrifrancis.cookpad.activities
 
+import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.widget.*
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.ferrifrancis.cookpad.dto.UsuarioDTO
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.StorageTask
+import com.google.firebase.storage.UploadTask
+import com.google.firebase.storage.ktx.storage
+import com.theartofdev.edmodo.cropper.CropImage
 
 class CrearReceta : AppCompatActivity() {
     var usuario: UsuarioDTO?=null
@@ -19,12 +35,26 @@ class CrearReceta : AppCompatActivity() {
     var receta: RecetaDTO?=null
     var uid_receta:String? =null
 
+    var myUri = ""
+    var imageUri: Uri? = null
+    var storageRecetaImage: StorageReference? = null
+
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_receta)
+
+
         usuario= intent.getParcelableExtra<UsuarioDTO>("usuario")
         receta= intent.getParcelableExtra<RecetaDTO>("receta")
+
+        storageRecetaImage = FirebaseStorage.getInstance().reference.child("Image Receta")
+
         setearUsuarioFirebase()
         // calling the action bar
         val actionBar = getSupportActionBar()
@@ -55,15 +85,87 @@ class CrearReceta : AppCompatActivity() {
         val btnGuardarReceta = findViewById<Button>(R.id.btn_guardar_receta)
         btnGuardarReceta.setOnClickListener {
             crearReceta()
+       //     uploadImage()
 
             Toast.makeText(this,"Se ha guardado la receta", Toast.LENGTH_SHORT).show()
+        }
+
+        val saveImage = findViewById<Button>(R.id.btn_saveImage)
+        saveImage.setOnClickListener {
+         //   uploadImage()
+            CropImage.activity()
+                .setAspectRatio(2,1)
+                .start(this@CrearReceta)
         }
 
         val imgenReceta = findViewById<ImageView>(R.id.img_receta)
         imgenReceta.setOnClickListener {
 
         }
+
+
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+       super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data!= null )
+        {
+            val result = CropImage.getActivityResult(data)
+            imageUri = result.uri
+
+        }
+
+    }
+    fun uploadImage(
+        idReceta: String?
+    ){
+
+
+        when{
+            imageUri == null ->Toast.makeText(this, "Seleccione una foto", Toast.LENGTH_LONG).show()
+
+            else ->{
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setTitle("A;adir imagen receta")
+                progressDialog.setMessage("Esa a;adiendo la foto")
+                progressDialog.show()
+                val fileRef = storageRecetaImage!!.child(idReceta +".jpg")
+                var uploadTask: StorageTask<*>
+                uploadTask = fileRef.putFile(imageUri!!)
+                uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task->
+                    if(!task.isSuccessful){
+                        task.exception?.let {
+                            throw  it
+                            progressDialog.dismiss()
+                        }
+                    }
+                    return@Continuation fileRef.downloadUrl
+                })
+                    .addOnCompleteListener(OnCompleteListener<Uri> { task->
+                        if(task.isSuccessful){
+
+                            val dowloadUrl = task.result
+                            myUri= dowloadUrl.toString()
+
+                            val ref = FirebaseDatabase.getInstance().reference.child("receta")
+                            val postId= ref.push().key
+                            Toast.makeText(this, "Account Information has been updated successfully.", Toast.LENGTH_LONG).show()
+
+
+                            finish()
+                            progressDialog.dismiss()
+
+                        }
+                        else{
+                            progressDialog.dismiss()
+                        }
+                    })
+            }
+        }
+    }
+
+   
 
     fun setPopupMenuIngrediente(imagen: ImageView)
     {
@@ -141,6 +243,7 @@ class CrearReceta : AppCompatActivity() {
         val paso4 = findViewById<EditText>(R.id.et_descripcion_paso4)
         val aplauso= 0
         val corazon= 0
+        val imagen= findViewById<ImageView>(R.id.img_receta)
 
         val objetoRecetaDTO = RecetaDTO(
             null,
@@ -156,7 +259,9 @@ class CrearReceta : AppCompatActivity() {
             paso4.text.toString(),
             aplauso,
             corazon,
-            usuario!!.nombre
+            usuario!!.nombre,
+
+
 
         )
         val nuevaReceta = hashMapOf<String, Any>(
@@ -178,6 +283,7 @@ class CrearReceta : AppCompatActivity() {
 
 
 
+
             )
         val db= Firebase.firestore
         val referencia = db.collection("receta")
@@ -186,6 +292,7 @@ class CrearReceta : AppCompatActivity() {
             .addOnSuccessListener {
                 this.uid_receta = it.id
                 crearIngredientes()
+                uploadImage(uid_receta)
                 limpiar()
                 abrirActividadConParametros(MainActivity::class.java,usuario!!)
                 Log.i("firestore","Se creó receta")
@@ -231,6 +338,20 @@ class CrearReceta : AppCompatActivity() {
             .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
             .addOnFailureListener{ Log.i("transaccion", "Error")}
     }
+    fun cargarImagen(caratula: String){
+        var referencia = Firebase.storage
+        var nombreImg = referencia.reference.child(caratula)
+        nombreImg.getBytes(10024*10024)
+            .addOnSuccessListener {
+                val bit: Bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+                //Log.i("Firebase-Imagen", "Imagen recuperada->  ${dataDir}" )
+                var imagen=findViewById<ImageView>(R.id.img_receta)
+                    .setImageBitmap(bit)
+            }
+            .addOnFailureListener {
+
+            }
+    }
 
 
 
@@ -248,41 +369,7 @@ class CrearReceta : AppCompatActivity() {
         val cantidad4= findViewById<EditText>(R.id.tv_cantidadIngrediente4).text.toString()
         val cantidad5= findViewById<EditText>(R.id.tv_cantidadIngrediente5).text.toString()
         val cantidad6= findViewById<EditText>(R.id.tv_cantidadIngrediente6).text.toString()
-       /* val objetoIngrediente= IngredienteDTO(
-            null,
-            this.uid_receta,
-            cantidad1.text.toString(),
-            ingrediente1.text.toString(),
-            cantidad2.text.toString(),
-            ingrediente2.text.toString(),
-            cantidad3.text.toString(),
-            ingrediente3.text.toString(),
-            cantidad4.text.toString(),
-            ingrediente4.text.toString(),
-            cantidad5.text.toString(),
-            ingrediente5.text.toString(),
-            cantidad6.text.toString(),
-            ingrediente6.text.toString()
 
-
-
-        )*/
-    /*    val nuevoIngrediente = hashMapOf<String, Any>(
-            "receta_uid" to objetoIngrediente.uid_receta!!,
-            "cantidad1" to objetoIngrediente.cantidad1!!,
-            "ingrediente1" to objetoIngrediente.ingrediente1!! ,
-            "cantidad2" to objetoIngrediente.cantidad2!!,
-            "ingrediente2" to objetoIngrediente.ingrediente2!! ,
-            "cantida3" to objetoIngrediente.cantidad3!!,
-            "ingrediente3" to objetoIngrediente.ingrediente3!! ,
-            "cantidad4" to objetoIngrediente.cantidad4!!,
-            "ingrediente4" to objetoIngrediente.ingrediente4!! ,
-            "cantidad5" to objetoIngrediente.cantidad5!!,
-            "ingrediente5" to objetoIngrediente.ingrediente5!!,
-            "cantidad6" to objetoIngrediente.cantidad6!!,
-            "ingrediente6" to objetoIngrediente.ingrediente6!!,
-        )
-*/
         val nuevoIngrediente = hashMapOf<String, Any>(
             "receta_uid" to this.uid_receta!!,
             "cantidad1" to cantidad1,
@@ -356,13 +443,8 @@ class CrearReceta : AppCompatActivity() {
         cantidad5.text.clear()
         cantidad6.text.clear()
 
-
-
-
-
-
-
-
     }
+
+
 
 }
