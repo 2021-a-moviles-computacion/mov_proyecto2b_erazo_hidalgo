@@ -123,11 +123,24 @@ class HomeFragment : Fragment() {
                             val idReceta: String? = doc.document.id
                             val nombreUsuario: String? = doc.document.get("nombreUsuarioAutor").toString()
                             val nombreReceta: String? = doc.document.get("tituloReceta").toString()
+                            val uid_usuario: String? = doc.document.get("uid_usuario").toString()
+                            val descripcionReceta: String? = doc.document.get("descripcionReceta").toString()
+                            val procedimientoReceta: String? = doc.document.get("procedimientoReceta").toString()
+                            val comensales: Int? = doc.document.get("comensales").toString().toIntOrNull()
+                            val tiempoElaboracion: String? = doc.document.get("tiempoElaboracion").toString()
+                            val paso1: String? = doc.document.get("paso1").toString()
+                            val paso2: String? = doc.document.get("paso2").toString()
+                            val paso3: String? = doc.document.get("paso3").toString()
+                            val paso4: String? = doc.document.get("paso4").toString()
+                            val reaccionAplauso: Int? = doc.document.get("reaccionAplauso").toString().toIntOrNull()
+                            val reaccionCorazon: Int? = doc.document.get("reaccionCorazon").toString().toIntOrNull()
+
+
 
                             val recetaObj = RecetaDTO(uid_receta = idReceta, tituloReceta = nombreReceta, nombreUsuarioAutor = nombreUsuario,
-                                uid_usuario = null,descripcionReceta = null, comensales = null,paso1=null,paso2=null,
-                                paso3=null,paso4=null,reaccionAplauso = null,reaccionCorazon = null,
-                                imageReceta = null,procedimientoReceta = null, tiempoElaboracion = null )
+                                uid_usuario = uid_usuario,descripcionReceta = descripcionReceta, comensales = comensales,paso1=paso1,paso2=paso2,
+                                paso3=paso3,paso4=paso4,reaccionAplauso = reaccionAplauso,reaccionCorazon = reaccionCorazon,
+                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion )
 
                             //val receta: RecetaDTO =doc.document.toObject(RecetaDTO::class.java)
                             //receta.imageReceta = receta.uid_receta?.let { cargarImagen(it) }

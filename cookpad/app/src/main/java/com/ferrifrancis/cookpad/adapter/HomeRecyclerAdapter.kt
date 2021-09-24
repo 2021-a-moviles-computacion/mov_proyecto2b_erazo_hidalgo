@@ -120,7 +120,7 @@ class HomeRecyclerAdapter (
     class HomeViewHolder constructor(
         itemView: View/*, listener: onItemClickListener*/
     ) : RecyclerView.ViewHolder(itemView) {
-        val imagenReceta = itemView.img_receta
+        val imagenReceta = itemView.img_vereceta
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         //val imagenAutorReceta = itemView.img_usuario1
@@ -151,23 +151,10 @@ class HomeRecyclerAdapter (
 
             }
 
-
-
-
-
-
-
-
-
-
         }
         private fun verReceta(position: Int){
 
         }
-
-
-
-
 
 
         fun aumentarEn1Reaccion(indxDato: Int, tipoReaccion: Int) {

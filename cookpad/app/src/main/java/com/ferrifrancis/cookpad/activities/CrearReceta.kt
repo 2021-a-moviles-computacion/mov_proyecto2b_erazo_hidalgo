@@ -239,9 +239,11 @@ class CrearReceta : AppCompatActivity() {
         val paso2 = findViewById<EditText>(R.id.et_descripcion_paso2)
         val paso3 = findViewById<EditText>(R.id.et_descripcion_paso3)
         val paso4 = findViewById<EditText>(R.id.et_descripcion_paso4)
-        val aplauso= findViewById<ChipGroup>(R.id.chip_aplauso)
-        val corazon= findViewById<ChipGroup>(R.id.chip_aplauso)
+        //val aplauso= findViewById<ChipGroup>(R.id.chip_aplauso)
+        //val corazon= findViewById<ChipGroup>(R.id.chip_aplauso)
         val imagen= findViewById<ImageView>(R.id.img_truco)
+        val aplauso = 0
+        val corazon = 0
 
         val objetoRecetaDTO = RecetaDTO(
             null,
@@ -255,7 +257,7 @@ class CrearReceta : AppCompatActivity() {
             paso2.text.toString(),
             paso3.text.toString(),
             paso4.text.toString(),
-            aplauso.getChildAt(0).getText().toString(),
+            aplauso,
             corazon,
             usuario!!.nombre,
 
@@ -273,7 +275,7 @@ class CrearReceta : AppCompatActivity() {
             "paso2" to objetoRecetaDTO.paso2!!,
             "paso3" to objetoRecetaDTO.paso3!!,
             "paso4" to objetoRecetaDTO.paso4!!,
-             "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
+            "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
             "reaccionCorazon" to objetoRecetaDTO.reaccionCorazon!!,
             "nombreUsuarioAutor" to objetoRecetaDTO.nombreUsuarioAutor!!
 
