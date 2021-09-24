@@ -67,13 +67,11 @@ class SearchFragment : Fragment() {
         val searchView = requireView().findViewById<SearchView>(R.id.sv_buscar)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.i("search.fragment","entró onQueryTextSubmit")
                 return  false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 //cuando el usuario escribe cualquier textp
-                Log.i("search.fragment","entró onQueryTextChange")
                 listaRecetaTemporal.clear()
                 val searchText = newText!!.toLowerCase(Locale.getDefault())
                 if(searchText.isNotEmpty()){

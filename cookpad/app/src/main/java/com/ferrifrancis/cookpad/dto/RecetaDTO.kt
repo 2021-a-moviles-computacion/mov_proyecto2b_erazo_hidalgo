@@ -1,5 +1,6 @@
 package com.ferrifrancis.cookpad.dto
 
+import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 
@@ -18,7 +19,7 @@ class RecetaDTO(
     var reaccionAplauso: Int?= null,
     var reaccionCorazon: Int?= null,
     val nombreUsuarioAutor: String?= null,
-    val imageReceta: String? = null
+    var imageReceta: Bitmap? = null
 
 ):Parcelable{
     constructor(parcel: Parcel) : this(
@@ -35,7 +36,6 @@ class RecetaDTO(
         parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readString(),
         parcel.readString()
     ) {
     }
@@ -55,7 +55,7 @@ class RecetaDTO(
         parcel.writeValue(reaccionAplauso)
         parcel.writeValue(reaccionCorazon)
         parcel.writeString(nombreUsuarioAutor)
-        parcel.writeString(imageReceta)
+        //parcel.writeByte(imageReceta!!)
     }
 
     override fun describeContents(): Int {

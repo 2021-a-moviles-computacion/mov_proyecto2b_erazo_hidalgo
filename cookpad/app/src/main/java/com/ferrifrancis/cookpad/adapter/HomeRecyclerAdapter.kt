@@ -33,7 +33,7 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val receta : RecetaDTO = this.recetaList[position]
-        //holder.imagenReceta.setImageResource(receta.)
+        holder.imagenReceta.setImageBitmap(receta.imageReceta)
         holder.tituloReceta.setText(receta.tituloReceta)
         holder.nombreAutorReceta.setText(receta.nombreUsuarioAutor)
         //holder.imagenAutorReceta.setImageResource(receta.)
@@ -55,7 +55,7 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
     class HomeViewHolder constructor(
         itemView: View/*, listener: onItemClickListener*/
     ) : RecyclerView.ViewHolder(itemView) {
-        //val imagenReceta = itemView.img_receta
+        val imagenReceta = itemView.img_receta
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         //val imagenAutorReceta = itemView.img_usuario1

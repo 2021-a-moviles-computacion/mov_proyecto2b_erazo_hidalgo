@@ -3,6 +3,7 @@ package com.ferrifrancis.cookpad.activities
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -120,8 +121,6 @@ class CrearReceta : AppCompatActivity() {
     fun uploadImage(
         idReceta: String?
     ){
-
-
         when{
             imageUri == null ->Toast.makeText(this, "Seleccione una foto", Toast.LENGTH_LONG).show()
 
@@ -147,7 +146,6 @@ class CrearReceta : AppCompatActivity() {
 
                             val dowloadUrl = task.result
                             myUri= dowloadUrl.toString()
-
                             val ref = FirebaseDatabase.getInstance().reference.child("receta")
                             val postId= ref.push().key
                             Toast.makeText(this, "Account Information has been updated successfully.", Toast.LENGTH_LONG).show()
@@ -338,6 +336,7 @@ class CrearReceta : AppCompatActivity() {
             .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
             .addOnFailureListener{ Log.i("transaccion", "Error")}
     }
+
     fun cargarImagen(caratula: String){
         var referencia = Firebase.storage
         var nombreImg = referencia.reference.child(caratula)
