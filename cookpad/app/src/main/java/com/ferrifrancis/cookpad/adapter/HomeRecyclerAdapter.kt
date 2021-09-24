@@ -1,22 +1,32 @@
 package com.ferrifrancis.cookpad.adapter
 
+
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.data.Data
 import com.ferrifrancis.cookpad.dto.RecetaDTO
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 
 
-class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
-    RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>() {
+class HomeRecyclerAdapter (
+    val recetaList: ArrayList<RecetaDTO>,
+   // val contexto: Context
+
+
+
+    ):RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>()
+{
 
     //private lateinit var  mListener: onItemClickListener
 
@@ -32,6 +42,7 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+        //val receta1= recetaList[position]
         val receta : RecetaDTO = this.recetaList[position]
         holder.imagenReceta.setImageBitmap(receta.imageReceta)
         holder.tituloReceta.setText(receta.tituloReceta)
@@ -40,6 +51,60 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
         //holder.stripeMenu
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())
         holder.chipCorazon.setText(receta.reaccionCorazon.toString())
+     /*   holder.imagenReceta.setOnClickListener{
+            contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta1))
+        }*/
+        holder.chipAplauso.setOnCloseIconClickListener{
+            if(holder.chipAplauso.text.toString()=="1")
+            {
+                val db = Firebase.firestore
+                val refCities =
+                    db.collection("receta")
+                        .document("receta_uid")
+                db.runTransaction {
+                        transaction ->
+                    val documentoActual = transaction.get(refCities)
+                    val aplauso = documentoActual.getDouble("aplauso")
+
+                    if(aplauso !=null){
+                        val nuevaReaccionAplauso = aplauso+1
+
+                        transaction.update(refCities, "reaccionAplauso", nuevaReaccionAplauso)
+
+
+                    }
+                }
+                    .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
+                    .addOnFailureListener{ Log.i("transaccion", "Error")}
+
+
+            }
+        }
+
+
+
+
+    }
+    fun transaccion(){
+        val db = Firebase.firestore
+        val refCities =
+            db.collection("receta")
+                .document("BJ")
+        db.runTransaction {
+                transaction ->
+            val documentoActual = transaction.get(refCities)
+            val aplauso = documentoActual.getDouble("aplauso")
+            val corazon = documentoActual.getDouble("corazon")
+            if(aplauso !=null && corazon !=null){
+                val nuevaReaccionAplauso = aplauso+1
+                val nuevaReaccionCorazon = corazon+1
+                transaction.update(refCities, "reaccionAplauso", nuevaReaccionAplauso)
+                transaction.update(refCities, "reaccionCorazon", nuevaReaccionCorazon)
+
+            }
+        }
+            .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
+            .addOnFailureListener{ Log.i("transaccion", "Error")}
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
@@ -69,14 +134,14 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }*/
-            chipAplauso.setOnClickListener {
+      /*      chipAplauso.setOnClickListener {
 
                 Log.i("home recycler adapter"," posicion item al dar clic en chip ${adapterPosition}")
-                Data.aumentarEn1Reaccion(adapterPosition,0)
+                aumentarEn1Reaccion(adapterPosition,0)
                 chipAplauso.setText(Data.listaDatos[adapterPosition].reaccionAplauso.toString());
-            }
+            }*/
             chipCorazon.setOnClickListener {
-                Data.aumentarEn1Reaccion(adapterPosition,1)
+                aumentarEn1Reaccion(adapterPosition,1)
                 chipCorazon.setText(Data.listaDatos[adapterPosition].reaccionAplauso.toString())
             }
 
@@ -85,9 +150,42 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
                 popupMenu(it)
 
             }
+
+
+
+
+
+
+
+
+
+
+        }
+        private fun verReceta(position: Int){
+
         }
 
 
+
+
+
+
+        fun aumentarEn1Reaccion(indxDato: Int, tipoReaccion: Int) {
+            //tipoReaccion 0-> aplauso, 1 -> corazon
+            when (tipoReaccion) {
+                0 -> {
+                    val aplausoNum: Int = Data.listaDatos[indxDato].reaccionAplauso
+                    Data.listaDatos[indxDato].reaccionAplauso = aplausoNum + 1
+
+                }
+                1 -> {
+                    val corazonNum: Int = Data.listaDatos[indxDato].reaccionCorazon
+                    Data.listaDatos[indxDato].reaccionCorazon = corazonNum + 1
+
+                }
+
+            }
+        }
         fun popupMenu(v: View) {
             Log.i("home recycler adapter","popupmenu funcion")
             val popupMenu = PopupMenu(v.getContext(), v)
@@ -119,6 +217,8 @@ class HomeRecyclerAdapter ( val recetaList: ArrayList<RecetaDTO>) :
 
 
     }
+
+
 
 
 

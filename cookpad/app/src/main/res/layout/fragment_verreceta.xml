@@ -50,7 +50,7 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/img_receta"
+                android:id="@+id/img_truco"
                 android:layout_width="match_parent"
                 android:layout_height="154dp"
 

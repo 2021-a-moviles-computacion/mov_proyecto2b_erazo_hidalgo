@@ -1,7 +1,10 @@
 package com.ferrifrancis.cookpad.data
 
 import android.content.ContentValues
+import android.content.Intent
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.startActivityForResult
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.dto.RecetaDTO
@@ -9,8 +12,12 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class Data {
+
     companion object {
         var listaDatos: ArrayList<Home> = createDataSetHome()
+        val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
+
+
 
 
         fun createDataSetHome(): ArrayList<Home> {
@@ -95,5 +102,10 @@ class Data {
 
 
 
+
+
+
     }
+
+
 }

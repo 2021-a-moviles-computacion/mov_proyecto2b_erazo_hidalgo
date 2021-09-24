@@ -1,7 +1,12 @@
 package com.ferrifrancis.cookpad.fragments
 
+<<<<<<< HEAD
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+=======
+import android.content.Context
+import android.content.Intent
+>>>>>>> main
 import android.os.Bundle
 
 import android.util.Log
@@ -10,15 +15,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.adapter.HomeRecyclerAdapter
+import com.ferrifrancis.cookpad.adapter.VerRecetaRecyclerAdapter
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.google.firebase.firestore.*
+<<<<<<< HEAD
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+=======
+import com.google.firebase.firestore.ktx.toObject
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.concurrent.RecursiveAction
+>>>>>>> main
 
 
 class HomeFragment : Fragment() {
@@ -30,39 +45,50 @@ class HomeFragment : Fragment() {
     val PATH_IMAGE = "Image Receta/"
 
 
+
+
+
     private lateinit var listaHome: ArrayList<Home>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> main
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?)
+    {
         super.onViewCreated(itemView, savedInstanceState)
+
 
         recyclerView = requireView().findViewById(R.id.rv_home)
         recyclerView.layoutManager = GridLayoutManager(activity,2)
         recyclerView.setHasFixedSize(true)
 
-        this.listaReceta = arrayListOf()
-
-        this.homeAdapter = HomeRecyclerAdapter(this.listaReceta)
-
-        recyclerView.adapter = this.homeAdapter
+          this.listaReceta = arrayListOf()
+          this.homeAdapter = HomeRecyclerAdapter(this.listaReceta,  )
+          recyclerView.adapter = this.homeAdapter
 
         eventChangeListener()
 
     }
 
+<<<<<<< HEAD
     fun cargarImagenYActualizaLista(recetaObjeto: RecetaDTO?){
 
         if(recetaObjeto != null && recetaObjeto.uid_receta != null) {
@@ -88,6 +114,10 @@ class HomeFragment : Fragment() {
         }
 
     }
+=======
+
+
+>>>>>>> main
 
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()

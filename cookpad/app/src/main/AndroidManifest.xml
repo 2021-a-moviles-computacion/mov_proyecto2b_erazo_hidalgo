@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ferrifrancis.cookpad">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -13,8 +14,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.CrearReceta"></activity>
         <activity android:name=".activities.CrearTruco"></activity>
-        <activity android:name=".fragments.CrearRecetaFragment" />
-        <activity android:name=".fragments.IngredientsFragment" />
+
+        <activity android:name=".adapter.VerRecetaRecyclerAdapter" />
+        <activity android:name=".fragments.IngredientsFragment"
+            tools:ignore="Instantiatable" />
         <activity android:name=".activities.RegistrarseActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.LoginActivity">

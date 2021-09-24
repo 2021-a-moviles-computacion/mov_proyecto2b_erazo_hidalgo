@@ -1,6 +1,9 @@
 package com.ferrifrancis.cookpad.activities
 
+import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +12,27 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.PopupMenu
+import android.widget.Toast
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.dto.UsuarioDTO
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.StorageTask
+import com.google.firebase.storage.UploadTask
+import com.theartofdev.edmodo.cropper.CropImage
 
 class CrearTruco : AppCompatActivity() {
-
+    var uid_truco:String? =null
     var usuario: UsuarioDTO?=null
-
+    var myUri = ""
+    var imageUri: Uri? = null
+    var storageRecetaImage: StorageReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_truco2)
@@ -41,6 +55,14 @@ class CrearTruco : AppCompatActivity() {
             popupMenu.inflate(R.menu.menu_add_paso)
             popupMenu.show()
         }
+        val imagenTruco= findViewById<ImageView>(R.id.img_truco)
+        imagenTruco.setOnClickListener{
+            uploadImage(this.uid_truco)
+        }
+        CropImage.activity()
+            .setAspectRatio(2,1)
+            .start(this@CrearTruco)
+
 
     }
 
@@ -84,6 +106,8 @@ class CrearTruco : AppCompatActivity() {
         val trucoColeccion = db.collection("truco")
         trucoColeccion.add(nuevoTruco)
             .addOnSuccessListener {
+                this.uid_truco = it.id
+                uploadImage(uid_truco)
                 Log.i("firestore","Se creó truco")
             }
             .addOnFailureListener {
@@ -140,4 +164,67 @@ class CrearTruco : AppCompatActivity() {
             }
         }
     }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data!= null )
+        {
+            val result = CropImage.getActivityResult(data)
+            imageUri = result.uri
+            val imagenTruco= findViewById<ImageView>(R.id.img_truco)
+            imagenTruco.setImageURI(imageUri)
+
+        }
+
+    }
+    fun uploadImage(
+        idTruco: String?
+    ){
+
+
+        when{
+            imageUri == null -> Toast.makeText(this, "Seleccione una foto", Toast.LENGTH_LONG).show()
+
+            else ->{
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setTitle("Añadir imagen receta")
+                progressDialog.setMessage("Esta añadiendo la foto")
+                progressDialog.show()
+                val fileRef = storageRecetaImage!!.child(idTruco +".jpg")
+                var uploadTask: StorageTask<*>
+                uploadTask = fileRef.putFile(imageUri!!)
+                uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task->
+                    if(!task.isSuccessful){
+                        task.exception?.let {
+                            throw  it
+                            progressDialog.dismiss()
+                        }
+                    }
+                    return@Continuation fileRef.downloadUrl
+                })
+                    .addOnCompleteListener(OnCompleteListener<Uri> { task->
+                        if(task.isSuccessful){
+
+                            val dowloadUrl = task.result
+                            myUri= dowloadUrl.toString()
+
+                            val ref = FirebaseDatabase.getInstance().reference.child("receta")
+                            val postId= ref.push().key
+                            Toast.makeText(this, "Account Information has been updated successfully.", Toast.LENGTH_LONG).show()
+
+
+                            finish()
+                            progressDialog.dismiss()
+
+                        }
+                        else{
+                            progressDialog.dismiss()
+                        }
+                    })
+            }
+        }
+    }
+
 }
