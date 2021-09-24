@@ -18,7 +18,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/img_receta"
+            android:id="@+id/img_truco"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:adjustViewBounds="true"
@@ -30,7 +30,7 @@
             android:id="@+id/et_titulo_receta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/img_receta"
+            android:layout_alignStart="@id/img_truco"
             android:layout_marginStart="120dp"
             android:layout_marginTop="35dp"
             android:text="titulo"

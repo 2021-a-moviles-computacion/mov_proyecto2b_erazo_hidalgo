@@ -3,11 +3,11 @@ package com.ferrifrancis.cookpad.activities
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.widget.*
@@ -31,7 +31,7 @@ import com.theartofdev.edmodo.cropper.CropImage
 
 class CrearReceta : AppCompatActivity() {
     var usuario: UsuarioDTO?=null
-    val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
+
     var receta: RecetaDTO?=null
     var uid_receta:String? =null
 
@@ -39,7 +39,7 @@ class CrearReceta : AppCompatActivity() {
     var imageUri: Uri? = null
     var storageRecetaImage: StorageReference? = null
 
-
+    val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
 
 
 
@@ -85,23 +85,22 @@ class CrearReceta : AppCompatActivity() {
         val btnGuardarReceta = findViewById<Button>(R.id.btn_guardar_receta)
         btnGuardarReceta.setOnClickListener {
             crearReceta()
-       //     uploadImage()
+
 
             Toast.makeText(this,"Se ha guardado la receta", Toast.LENGTH_SHORT).show()
         }
 
-        val saveImage = findViewById<Button>(R.id.btn_saveImage)
-        saveImage.setOnClickListener {
+        val imagenReceta = findViewById<ImageView>(R.id.imagen_receta)
+        imagenReceta.setOnClickListener {
          //   uploadImage()
-            CropImage.activity()
-                .setAspectRatio(2,1)
-                .start(this@CrearReceta)
-        }
 
-        val imgenReceta = findViewById<ImageView>(R.id.img_receta)
-        imgenReceta.setOnClickListener {
-
+            uploadImage(this.uid_receta)
         }
+        CropImage.activity()
+            .setAspectRatio(2,1)
+            .start(this@CrearReceta)
+
+
 
 
 
@@ -113,6 +112,8 @@ class CrearReceta : AppCompatActivity() {
         {
             val result = CropImage.getActivityResult(data)
             imageUri = result.uri
+            val imagenReceta= findViewById<ImageView>(R.id.imagen_receta)
+            imagenReceta.setImageURI(imageUri)
 
         }
 
@@ -127,8 +128,8 @@ class CrearReceta : AppCompatActivity() {
 
             else ->{
                 val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("A;adir imagen receta")
-                progressDialog.setMessage("Esa a;adiendo la foto")
+                progressDialog.setTitle("Añadir imagen receta")
+                progressDialog.setMessage("Esta añadiendo la foto")
                 progressDialog.show()
                 val fileRef = storageRecetaImage!!.child(idReceta +".jpg")
                 var uploadTask: StorageTask<*>
@@ -241,9 +242,9 @@ class CrearReceta : AppCompatActivity() {
         val paso2 = findViewById<EditText>(R.id.et_descripcion_paso2)
         val paso3 = findViewById<EditText>(R.id.et_descripcion_paso3)
         val paso4 = findViewById<EditText>(R.id.et_descripcion_paso4)
-        val aplauso= 0
-        val corazon= 0
-        val imagen= findViewById<ImageView>(R.id.img_receta)
+        val aplauso= findViewById<ChipGroup>(R.id.chip_aplauso)
+        val corazon= findViewById<ChipGroup>(R.id.chip_aplauso)
+        val imagen= findViewById<ImageView>(R.id.img_truco)
 
         val objetoRecetaDTO = RecetaDTO(
             null,
@@ -257,7 +258,7 @@ class CrearReceta : AppCompatActivity() {
             paso2.text.toString(),
             paso3.text.toString(),
             paso4.text.toString(),
-            aplauso,
+            aplauso.getChildAt(0).getText().toString(),
             corazon,
             usuario!!.nombre,
 
@@ -345,7 +346,7 @@ class CrearReceta : AppCompatActivity() {
             .addOnSuccessListener {
                 val bit: Bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
                 //Log.i("Firebase-Imagen", "Imagen recuperada->  ${dataDir}" )
-                var imagen=findViewById<ImageView>(R.id.img_receta)
+                var imagen=findViewById<ImageView>(R.id.img_truco)
                     .setImageBitmap(bit)
             }
             .addOnFailureListener {
@@ -444,6 +445,22 @@ class CrearReceta : AppCompatActivity() {
         cantidad6.text.clear()
 
     }
+
+    fun abrirActividadConParametros(
+        clase: Class<*>,
+        usuario: RecetaDTO,
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase,
+        )
+        //intentExplicito.putExtra("nombre","Adrian")
+        intentExplicito.putExtra("receta",usuario)
+        startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
+
+    }
+
+
 
 
 

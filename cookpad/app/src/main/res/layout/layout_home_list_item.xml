@@ -11,6 +11,7 @@
     app:cardPreventCornerOverlap="false">
 
     <LinearLayout
+        android:id="@+id/ll_mireceta"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -22,9 +23,9 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_usuario1"
-                android:layout_alignParentLeft="true"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
@@ -34,10 +35,10 @@
                 android:id="@+id/tv_nombre_autor_recete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/img_usuario1"
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_toEndOf="@id/img_usuario1"
                 android:text="@string/str_nombre_autor_receta"
                 android:textColor="@color/colorNombreAutorReceta"
                 android:textSize="15sp" />
@@ -46,18 +47,18 @@
                 android:id="@+id/stripe_menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@null"
                 android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="2dp"
                 android:adjustViewBounds="true"
+                android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_three_dots_vertical" />
         </RelativeLayout>
 
 
         <ImageView
-            android:id="@+id/img_receta"
+            android:id="@+id/img_vereceta"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="10dp"

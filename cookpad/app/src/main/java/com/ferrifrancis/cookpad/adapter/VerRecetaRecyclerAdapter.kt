@@ -5,12 +5,15 @@ import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.ClasesParcelables.BIngrediente
 import com.ferrifrancis.cookpad.R
+import com.ferrifrancis.cookpad.dto.RecetaDTO
 
 class VerRecetaRecyclerAdapter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_receta_recycler_adapter)
+        val receta = intent.getSerializableExtra("receta") as RecetaDTO
         val ListaIngredientes = arrayListOf<BIngrediente>()
+        val ListaPasos = arrayListOf<RecetaDTO>()
 
         val recyclerViewIngredientes= findViewById<RecyclerView>(
             R.id.rv_ingredientes
@@ -20,6 +23,8 @@ class VerRecetaRecyclerAdapter : AppCompatActivity() {
             this,
             recyclerViewIngredientes
         )
+
+
     }
 
     fun iniciarRecyclerView(
