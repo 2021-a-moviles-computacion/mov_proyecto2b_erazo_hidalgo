@@ -1,12 +1,10 @@
 package com.ferrifrancis.cookpad.fragments
 
-<<<<<<< HEAD
+
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-=======
 import android.content.Context
 import android.content.Intent
->>>>>>> main
 import android.os.Bundle
 
 import android.util.Log
@@ -24,16 +22,14 @@ import com.ferrifrancis.cookpad.adapter.HomeRecyclerAdapter
 import com.ferrifrancis.cookpad.adapter.VerRecetaRecyclerAdapter
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.google.firebase.firestore.*
-<<<<<<< HEAD
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-=======
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.concurrent.RecursiveAction
->>>>>>> main
+
 
 
 class HomeFragment : Fragment() {
@@ -53,13 +49,7 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-<<<<<<< HEAD
-=======
 
-
-
-
->>>>>>> main
     }
 
     override fun onCreateView(
@@ -88,7 +78,7 @@ class HomeFragment : Fragment() {
 
     }
 
-<<<<<<< HEAD
+
     fun cargarImagenYActualizaLista(recetaObjeto: RecetaDTO?){
 
         if(recetaObjeto != null && recetaObjeto.uid_receta != null) {
@@ -114,10 +104,7 @@ class HomeFragment : Fragment() {
         }
 
     }
-=======
 
-
->>>>>>> main
 
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
