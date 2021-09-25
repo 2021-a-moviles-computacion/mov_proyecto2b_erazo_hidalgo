@@ -48,8 +48,6 @@ class HomeRecyclerAdapter (
         holder.imagenReceta.setImageBitmap(receta.imageReceta)
         holder.tituloReceta.setText(receta.tituloReceta)
         holder.nombreAutorReceta.setText(receta.nombreUsuarioAutor)
-        //holder.imagenAutorReceta.setImageResource(receta.)
-        //holder.stripeMenu
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())
         holder.chipCorazon.setText(receta.reaccionCorazon.toString())
         //abrir actividad ver receta

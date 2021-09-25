@@ -13,11 +13,7 @@ import com.ferrifrancis.cookpad.activities.CrearReceta
 import kotlinx.android.synthetic.main.fragment_add.*
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AddFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class AddFragment : Fragment() {
 
 
