@@ -159,23 +159,10 @@ class HomeRecyclerAdapter (
             }*/
 
 
-
-
-
-
-
-
-
-
-
         }
         private fun verReceta(position: Int){
 
         }
-
-
-
-
 
 
         fun aumentarEn1Reaccion(indxDato: Int, tipoReaccion: Int) {

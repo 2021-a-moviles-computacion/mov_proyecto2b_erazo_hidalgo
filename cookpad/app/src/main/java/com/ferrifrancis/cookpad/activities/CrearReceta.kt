@@ -243,6 +243,8 @@ class CrearReceta : AppCompatActivity() {
         val Raplauso= findViewById<Chip>(R.id.chip_aplauso)
         val Rcorazon= findViewById<Chip>(R.id.chip_corazon)
         val imagen= findViewById<ImageView>(R.id.img_truco)
+        val aplauso = 0
+        val corazon = 0
 
         val objetoRecetaDTO = RecetaDTO(
             null,
