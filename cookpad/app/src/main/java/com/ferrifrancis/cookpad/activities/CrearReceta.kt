@@ -17,6 +17,7 @@ import com.ferrifrancis.cookpad.dto.UsuarioDTO
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -239,8 +240,8 @@ class CrearReceta : AppCompatActivity() {
         val paso2 = findViewById<EditText>(R.id.et_descripcion_paso2)
         val paso3 = findViewById<EditText>(R.id.et_descripcion_paso3)
         val paso4 = findViewById<EditText>(R.id.et_descripcion_paso4)
-        val aplauso= findViewById<ChipGroup>(R.id.chip_aplauso)
-        val corazon= findViewById<ChipGroup>(R.id.chip_aplauso)
+        val Raplauso= findViewById<Chip>(R.id.chip_aplauso)
+        val Rcorazon= findViewById<Chip>(R.id.chip_corazon)
         val imagen= findViewById<ImageView>(R.id.img_truco)
 
         val objetoRecetaDTO = RecetaDTO(
@@ -255,8 +256,8 @@ class CrearReceta : AppCompatActivity() {
             paso2.text.toString(),
             paso3.text.toString(),
             paso4.text.toString(),
-            aplauso.getChildAt(0).getText().toString(),
-            corazon,
+            0,
+            0,
             usuario!!.nombre,
 
 
@@ -273,15 +274,9 @@ class CrearReceta : AppCompatActivity() {
             "paso2" to objetoRecetaDTO.paso2!!,
             "paso3" to objetoRecetaDTO.paso3!!,
             "paso4" to objetoRecetaDTO.paso4!!,
-             "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
+            "reaccionAplauso" to objetoRecetaDTO.reaccionAplauso!!,
             "reaccionCorazon" to objetoRecetaDTO.reaccionCorazon!!,
             "nombreUsuarioAutor" to objetoRecetaDTO.nombreUsuarioAutor!!
-
-
-
-
-
-
             )
         val db= Firebase.firestore
         val referencia = db.collection("receta")

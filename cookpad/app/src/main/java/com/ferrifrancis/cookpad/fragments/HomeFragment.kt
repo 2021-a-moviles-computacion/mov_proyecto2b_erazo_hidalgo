@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
 
           this.listaReceta = arrayListOf()
-          this.homeAdapter = HomeRecyclerAdapter(this.listaReceta,  )
+          this.homeAdapter = HomeRecyclerAdapter(this.listaReceta, requireActivity())
           recyclerView.adapter = this.homeAdapter
 
         eventChangeListener()

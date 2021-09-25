@@ -11,7 +11,7 @@ class VerRecetaRecyclerAdapter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_receta_recycler_adapter)
-        val receta = intent.getSerializableExtra("receta") as RecetaDTO
+        val receta = intent.getParcelableExtra<RecetaDTO>("receta")
         val ListaIngredientes = arrayListOf<BIngrediente>()
         val ListaPasos = arrayListOf<RecetaDTO>()
 

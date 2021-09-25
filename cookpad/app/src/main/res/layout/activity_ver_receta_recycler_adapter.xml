@@ -205,8 +205,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_pasos"
-                android:layout_width="434dp"
-                android:layout_height="139dp"
+                android:layout_width="405dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="12dp"
                 app:layout_constraintEnd_toEndOf="@+id/textView12"
                 app:layout_constraintHorizontal_bias="0.0"

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.R
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 
 class HomeRecyclerAdapter (
     val recetaList: ArrayList<RecetaDTO>,
-   // val contexto: Context
+    val contexto: Context
 
 
 
@@ -51,40 +52,40 @@ class HomeRecyclerAdapter (
         //holder.stripeMenu
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())
         holder.chipCorazon.setText(receta.reaccionCorazon.toString())
-     /*   holder.imagenReceta.setOnClickListener{
-            contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta1))
-        }*/
+        //abrir actividad ver receta
+       holder.cardView.setOnClickListener{
+            contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta))
+        }
         holder.chipAplauso.setOnCloseIconClickListener{
-            if(holder.chipAplauso.text.toString()=="1")
-            {
+
                 val db = Firebase.firestore
                 val refCities =
                     db.collection("receta")
-                        .document("receta_uid")
+                        .document(receta.uid_receta!!)
                 db.runTransaction {
                         transaction ->
                     val documentoActual = transaction.get(refCities)
-                    val aplauso = documentoActual.getDouble("aplauso")
+                    //OBTENIENDO EL VALOR ACTUAL DEL DOCUMENTO
+                    val aplauso = documentoActual.get("reacionAplauso").toString().toInt()
 
                     if(aplauso !=null){
                         val nuevaReaccionAplauso = aplauso+1
-
                         transaction.update(refCities, "reaccionAplauso", nuevaReaccionAplauso)
-
-
                     }
                 }
                     .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
                     .addOnFailureListener{ Log.i("transaccion", "Error")}
 
 
-            }
+
         }
 
 
 
 
+
     }
+
     fun transaccion(){
         val db = Firebase.firestore
         val refCities =
@@ -120,13 +121,15 @@ class HomeRecyclerAdapter (
     class HomeViewHolder constructor(
         itemView: View/*, listener: onItemClickListener*/
     ) : RecyclerView.ViewHolder(itemView) {
-        val imagenReceta = itemView.img_receta
+        val imagenReceta = itemView.img_vereceta
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         //val imagenAutorReceta = itemView.img_usuario1
         val stripeMenu = itemView.stripe_menu
         val chipAplauso = itemView.chip_aplauso
         val chipCorazon = itemView.chip_corazon
+        val cardView= itemView.card_view_home_receta
+
 
 
         init {
@@ -150,6 +153,11 @@ class HomeRecyclerAdapter (
                 popupMenu(it)
 
             }
+      /*      val cardView= itemView.card_view_home_receta
+            cardView.setOnClickListener {
+                contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", this.recetaList))
+            }*/
+
 
 
 
