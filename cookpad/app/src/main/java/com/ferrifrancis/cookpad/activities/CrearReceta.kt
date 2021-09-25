@@ -96,10 +96,11 @@ class CrearReceta : AppCompatActivity() {
          //   uploadImage()
 
             uploadImage(this.uid_receta)
+            CropImage.activity()
+                .setAspectRatio(2,1)
+                .start(this@CrearReceta)
         }
-        CropImage.activity()
-            .setAspectRatio(2,1)
-            .start(this@CrearReceta)
+
 
 
 

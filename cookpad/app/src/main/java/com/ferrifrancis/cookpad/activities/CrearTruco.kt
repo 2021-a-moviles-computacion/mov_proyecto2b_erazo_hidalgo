@@ -58,10 +58,11 @@ class CrearTruco : AppCompatActivity() {
         val imagenTruco= findViewById<ImageView>(R.id.img_truco)
         imagenTruco.setOnClickListener{
             uploadImage(this.uid_truco)
+            CropImage.activity()
+                .setAspectRatio(2,1)
+                .start(this@CrearTruco)
         }
-        CropImage.activity()
-            .setAspectRatio(2,1)
-            .start(this@CrearTruco)
+
 
 
     }
