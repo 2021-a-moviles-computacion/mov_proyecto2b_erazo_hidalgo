@@ -37,7 +37,7 @@ class AccountTusTrucosAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>(
     class TusTrucosViewHolder constructor(
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
-        val imagenReceta = itemView.img_vereceta
+        val imagenReceta = itemView.img_ver_truco
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         val imagenAutorReceta = itemView.img_usuario1

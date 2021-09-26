@@ -25,7 +25,7 @@
                 tools:context=".activities.CrearReceta">
 
                 <EditText
-                    android:id="@+id/et_titulo_receta"
+                    android:id="@+id/et_titulo_truco1"
                     android:layout_width="320dp"
                     android:layout_height="54dp"
                     android:layout_marginBottom="16dp"

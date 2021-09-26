@@ -33,7 +33,7 @@
                 android:src="@drawable/usuario1" />
 
             <TextView
-                android:id="@+id/tv_nombre_autor_recete"
+                android:id="@+id/tv_nombre_autor_truco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
@@ -70,7 +70,7 @@
             android:src="@drawable/receta_fideos" />
 
         <TextView
-            android:id="@+id/et_titulo_receta"
+            android:id="@+id/et_titulo_truco1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"

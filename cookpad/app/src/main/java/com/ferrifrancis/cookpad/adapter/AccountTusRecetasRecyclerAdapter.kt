@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.Home
 import com.ferrifrancis.cookpad.R
 import kotlinx.android.synthetic.main.layout_account_tus_recetas_list_item.view.*
-import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 import kotlinx.android.synthetic.main.layout_home_list_item.view.et_titulo_receta
 
 class AccountTusRecetasRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -42,7 +41,7 @@ class AccountTusRecetasRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHo
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
         val imagenReceta = itemView.imagen_tus_recetas
-        val tituloReceta = itemView.et_titulo_receta
+        val tituloReceta = itemView.et_titulo_truco1
         val botonImagen: ImageButton = itemView.ib_menu_tusrecetas
 
         fun bind(home : Home)

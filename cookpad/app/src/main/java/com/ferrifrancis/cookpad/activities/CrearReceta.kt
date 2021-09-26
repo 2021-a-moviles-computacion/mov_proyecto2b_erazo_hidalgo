@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
@@ -232,7 +231,7 @@ class CrearReceta : AppCompatActivity() {
 
     fun crearReceta(){
 
-        val tituloReceta= findViewById<EditText>(R.id.et_titulo_receta)
+        val tituloReceta= findViewById<EditText>(R.id.et_titulo_truco1)
         val descripcionReceta = findViewById<EditText>(R.id.et_descripcion_receta)
         val procedimientoReceta = findViewById<EditText>(R.id.et_descripcion_receta)
         val comensales = findViewById<EditText>(R.id.ed_comensales_receta)
@@ -408,7 +407,7 @@ class CrearReceta : AppCompatActivity() {
         val cantidad5= findViewById<EditText>(R.id.tv_cantidadIngrediente5)
         val cantidad6= findViewById<EditText>(R.id.tv_cantidadIngrediente6)
 
-        val tituloReceta= findViewById<EditText>(R.id.et_titulo_receta)
+        val tituloReceta= findViewById<EditText>(R.id.et_titulo_truco1)
         val descripcionReceta = findViewById<EditText>(R.id.et_descripcion_receta)
         val procedimientoReceta = findViewById<EditText>(R.id.et_descripcion_receta)
         val comensales = findViewById<EditText>(R.id.ed_comensales_receta)

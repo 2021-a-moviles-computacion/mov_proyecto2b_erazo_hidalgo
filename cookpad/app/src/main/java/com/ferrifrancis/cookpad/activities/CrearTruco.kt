@@ -14,6 +14,8 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.Toast
 import com.ferrifrancis.cookpad.R
+import com.ferrifrancis.cookpad.dto.RecetaDTO
+import com.ferrifrancis.cookpad.dto.TrucoDTO
 import com.ferrifrancis.cookpad.dto.UsuarioDTO
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnCompleteListener
@@ -22,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
@@ -33,10 +36,12 @@ class CrearTruco : AppCompatActivity() {
     var myUri = ""
     var imageUri: Uri? = null
     var storageRecetaImage: StorageReference? = null
+    val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_truco2)
-
+        usuario= intent.getParcelableExtra<UsuarioDTO>("usuario")
+        storageRecetaImage = FirebaseStorage.getInstance().reference.child("Image Truco")
         setearUsuarioFirebase()
 
         val actionBar = getSupportActionBar()
@@ -97,10 +102,23 @@ class CrearTruco : AppCompatActivity() {
         val titulo = findViewById<EditText>(R.id.et_titulo_truco).text.toString()
         val truco = findViewById<EditText>(R.id.et_descripcion_truco).text.toString()
 
+        val objetoTrucoDTO = TrucoDTO(
+            null,
+            titulo,
+            truco ,
+            usuario!!.uid.toString(),
+            usuario!!.nombre,
+
+
+
+            )
+
         val nuevoTruco = hashMapOf<String, Any>(
-            "tituloTruco" to titulo,
-            "descripcionTruco" to truco,
-            "idUsuario" to this.usuario?.uid!!
+            "idUsuario" to objetoTrucoDTO.idUsuario!!,
+            "tituloTruco" to objetoTrucoDTO.tituloTruco!!,
+            "descripcionTruco" to objetoTrucoDTO.descripcionTruco!!,
+            "nombreUsuarioAutor" to objetoTrucoDTO.nombreUsuarioAutor!!
+
         )
 
         val db = Firebase.firestore
@@ -109,11 +127,26 @@ class CrearTruco : AppCompatActivity() {
             .addOnSuccessListener {
                 this.uid_truco = it.id
                 uploadImage(uid_truco)
+                abrirActividadConParametros(MainActivity::class.java,usuario!!)
                 Log.i("firestore","Se creó truco")
             }
             .addOnFailureListener {
                 Log.i("firestore","No se creó truco")
             }
+    }
+
+    fun abrirActividadConParametros(
+        clase: Class<*>,
+        usuario: UsuarioDTO,
+    ){
+        val intentExplicito = Intent(
+            this,
+            clase,
+        )
+        //intentExplicito.putExtra("nombre","Adrian")
+        intentExplicito.putExtra("usuario",usuario)
+        startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
+
     }
 
     fun abrirActividad(clase : Class<*>)
@@ -190,10 +223,10 @@ class CrearTruco : AppCompatActivity() {
 
             else ->{
                 val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("Añadir imagen receta")
+                progressDialog.setTitle("Añadir imagen truco")
                 progressDialog.setMessage("Esta añadiendo la foto")
                 progressDialog.show()
-                val fileRef = storageRecetaImage!!.child(idTruco +".jpg")
+                val fileRef = storageRecetaImage!!.child(idTruco+".jpg")
                 var uploadTask: StorageTask<*>
                 uploadTask = fileRef.putFile(imageUri!!)
                 uploadTask.continueWithTask(Continuation <UploadTask.TaskSnapshot, Task<Uri>>{ task->
@@ -211,7 +244,7 @@ class CrearTruco : AppCompatActivity() {
                             val dowloadUrl = task.result
                             myUri= dowloadUrl.toString()
 
-                            val ref = FirebaseDatabase.getInstance().reference.child("receta")
+                            val ref = FirebaseDatabase.getInstance().reference.child("truco")
                             val postId= ref.push().key
                             Toast.makeText(this, "Account Information has been updated successfully.", Toast.LENGTH_LONG).show()
 
