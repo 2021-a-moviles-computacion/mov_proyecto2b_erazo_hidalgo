@@ -19,9 +19,6 @@ import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.google.firebase.firestore.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -30,10 +27,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView//es no null,pero se inicializará más luego
     private lateinit var listaReceta: ArrayList<RecetaDTO>
     private lateinit var  db: FirebaseFirestore
-    val PATH_IMAGE = "Image Receta/"
-
-
-
+    val PATH_IMAGE_RECETA = "Image Receta/"
+    val PATH_IMAGE_USUARIO = "image_usuario/"
 
 
     private lateinit var listaHome: ArrayList<Home>
@@ -76,20 +71,37 @@ class HomeFragment : Fragment() {
         if(recetaObjeto != null && recetaObjeto.uid_receta != null) {
 
             val referencia = Firebase.storage
-            val nombreImg = referencia.reference.child(PATH_IMAGE+recetaObjeto.uid_receta+".jpg")
+            val nombreImg = referencia.reference.child(PATH_IMAGE_RECETA+recetaObjeto.uid_receta+".jpg")
+            val usuarioImg = referencia.reference.child(PATH_IMAGE_USUARIO+recetaObjeto.uid_usuario+".jpg")
 
             nombreImg.getBytes(10024 * 10024)
                 .addOnSuccessListener {
-                    Log.i("home", "cargar imagen success")
+                    Log.i("firestorage", "cargar imagen receta success")
                     val bit = BitmapFactory.decodeByteArray(it, 0, it.size)
                     recetaObjeto.imageReceta = bit
-                    this.listaReceta.add(recetaObjeto)
-                    homeAdapter.notifyDataSetChanged()
-                    Log.i("home", "se cargó imagen, se actualizó lista")
+                    //this.listaReceta.add(recetaObjeto)
+                    //homeAdapter.notifyDataSetChanged()
+
+                    usuarioImg.getBytes(10024 * 10024)
+                        .addOnSuccessListener {
+                            Log.i("firestorage", "cargar imagen usuario success")
+                            val bit = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            recetaObjeto.imageUsuario = bit
+                            this.listaReceta.add(recetaObjeto)
+                            homeAdapter.notifyDataSetChanged()
+                            Log.i("firestorage", "se cargó imagen usuario, se actualizó lista")
+                        }
+                        .addOnFailureListener {
+                            Log.i("firestorage", "cargar imagen usuario NO success")
+                        }
+
+                    Log.i("firestorage", "se cargó imagen receta, se actualizó lista")
                 }
                 .addOnFailureListener {
-                    Log.i("home", "cargar imagen NO success")
+                    Log.i("firestorage", "cargar imagen receta NO success")
                 }
+
+
         }
         else{
             Log.i("firestorage","no se cargó imagen, no se actualizó lista")
@@ -132,7 +144,7 @@ class HomeFragment : Fragment() {
                             val recetaObj = RecetaDTO(uid_receta = idReceta, tituloReceta = nombreReceta, nombreUsuarioAutor = nombreUsuario,
                                 uid_usuario = uid_usuario,descripcionReceta = descripcionReceta, comensales = comensales,paso1=paso1,paso2=paso2,
                                 paso3=paso3,paso4=paso4,reaccionAplauso = reaccionAplauso,reaccionCorazon = reaccionCorazon,
-                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion )
+                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion, imageUsuario=null )
 
                             //val receta: RecetaDTO =doc.document.toObject(RecetaDTO::class.java)
                             //receta.imageReceta = receta.uid_receta?.let { cargarImagen(it) }

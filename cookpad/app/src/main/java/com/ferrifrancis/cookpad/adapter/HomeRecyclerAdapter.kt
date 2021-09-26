@@ -41,15 +41,15 @@ class HomeRecyclerAdapter (
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        //val receta1= recetaList[position]
+        
         val receta : RecetaDTO = this.recetaList[position]
         holder.imagenReceta.setImageBitmap(receta.imageReceta)
         holder.tituloReceta.setText(receta.tituloReceta)
         holder.nombreAutorReceta.setText(receta.nombreUsuarioAutor)
-        //holder.imagenAutorReceta.setImageResource(receta.)
-        //holder.stripeMenu
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())
         holder.chipCorazon.setText(receta.reaccionCorazon.toString())
+        holder.imagenUsuario.setImageBitmap(receta.imageUsuario)
+
         //abrir actividad ver receta
        holder.cardView.setOnClickListener{
             contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta))
@@ -127,7 +127,7 @@ class HomeRecyclerAdapter (
         val chipAplauso = itemView.chip_aplauso
         val chipCorazon = itemView.chip_corazon
         val cardView= itemView.card_view_home_receta
-
+        val imagenUsuario = itemView.img_usuario1
 
 
         init {
