@@ -51,4 +51,6 @@
     <string name="str_fem">Femenino</string>
     <string name="str_mas">Masculino</string>
 
+    <string name="registro_usuario">Registro usuario</string>
+
 </resources>

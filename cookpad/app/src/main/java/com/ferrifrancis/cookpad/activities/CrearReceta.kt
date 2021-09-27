@@ -334,20 +334,7 @@ class CrearReceta : AppCompatActivity() {
             .addOnFailureListener{ Log.i("transaccion", "Error")}
     }
 
-    fun cargarImagen(caratula: String){
-        var referencia = Firebase.storage
-        var nombreImg = referencia.reference.child(caratula)
-        nombreImg.getBytes(10024*10024)
-            .addOnSuccessListener {
-                val bit: Bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
-                //Log.i("Firebase-Imagen", "Imagen recuperada->  ${dataDir}" )
-                var imagen=findViewById<ImageView>(R.id.img_truco)
-                    .setImageBitmap(bit)
-            }
-            .addOnFailureListener {
 
-            }
-    }
 
 
 
