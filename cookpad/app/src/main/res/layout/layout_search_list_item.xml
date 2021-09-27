@@ -27,7 +27,7 @@
             android:src="@drawable/receta_fideos" />
 
         <TextView
-            android:id="@+id/et_titulo_receta"
+            android:id="@+id/et_titulo_recetabuscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/img_truco"

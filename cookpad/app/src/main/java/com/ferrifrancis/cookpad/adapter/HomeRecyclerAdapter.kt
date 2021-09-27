@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.data.Data
@@ -43,13 +41,15 @@ class HomeRecyclerAdapter (
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        //val receta1= recetaList[position]
+        
         val receta : RecetaDTO = this.recetaList[position]
         holder.imagenReceta.setImageBitmap(receta.imageReceta)
         holder.tituloReceta.setText(receta.tituloReceta)
         holder.nombreAutorReceta.setText(receta.nombreUsuarioAutor)
         holder.chipAplauso.setText(receta.reaccionAplauso.toString())
         holder.chipCorazon.setText(receta.reaccionCorazon.toString())
+        holder.imagenUsuario.setImageBitmap(receta.imageUsuario)
+
         //abrir actividad ver receta
        holder.cardView.setOnClickListener{
             contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta))
@@ -119,7 +119,7 @@ class HomeRecyclerAdapter (
     class HomeViewHolder constructor(
         itemView: View/*, listener: onItemClickListener*/
     ) : RecyclerView.ViewHolder(itemView) {
-        val imagenReceta = itemView.img_vereceta
+        val imagenReceta = itemView.img_ver_truco
         val tituloReceta = itemView.et_titulo_receta
         val nombreAutorReceta = itemView.tv_nombre_autor_recete
         //val imagenAutorReceta = itemView.img_usuario1
@@ -127,7 +127,7 @@ class HomeRecyclerAdapter (
         val chipAplauso = itemView.chip_aplauso
         val chipCorazon = itemView.chip_corazon
         val cardView= itemView.card_view_home_receta
-
+        val imagenUsuario = itemView.img_usuario1
 
 
         init {

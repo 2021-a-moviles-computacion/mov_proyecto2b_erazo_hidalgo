@@ -11,7 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val accountFragment = AccountFragment()
+   // private val accountFragment = AccountFragment()
+   private val trucoFragment = TrucoFragment()
     private val addFragment = AddFragment()
     private val homeFragment = HomeFragment()
     private val messageFragment = MessageFragment()
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_search -> replaceFragment(searchFragment)
                 R.id.ic_add -> replaceFragment(addFragment)
                 R.id.ic_message -> replaceFragment(messageFragment)
-                R.id.ic_account -> replaceFragment(accountFragment)
+                R.id.ic_account -> replaceFragment(trucoFragment)
             }
             true
         }

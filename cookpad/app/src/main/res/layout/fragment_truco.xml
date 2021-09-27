@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteY="-46dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_home"
+        android:id="@+id/rv_truco"
         android:layout_width="308dp"
         android:layout_height="420dp"
         app:layout_constraintBottom_toBottomOf="parent"

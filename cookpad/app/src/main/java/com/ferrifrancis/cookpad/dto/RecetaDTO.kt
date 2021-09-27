@@ -19,7 +19,8 @@ class RecetaDTO(
     var reaccionAplauso: Int?= null,
     var reaccionCorazon: Int?= null,
     val nombreUsuarioAutor: String?= null,
-    var imageReceta: Bitmap? = null
+    var imageReceta: Bitmap? = null,
+    var imageUsuario: Bitmap? = null,
 
 ):Parcelable{
     constructor(parcel: Parcel) : this(
