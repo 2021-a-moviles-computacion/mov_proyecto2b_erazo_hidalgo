@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    tools:context=".fragments.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/imageVerReceta"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/donas" />
+
+        <TextView
+            android:id="@+id/tituloVerReceta"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="Nombre Receta"
+            android:textSize="23dp"
+            android:textStyle="bold"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/usuarioImagenVerReceta"
+                android:layout_width="59dp"
+                android:layout_height="43dp"
+                android:src="@drawable/usuario1" />
+
+            <TextView
+                android:id="@+id/nombreUsuarioVerReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/usuarioImagenVerReceta"
+                android:text="TextView"
+                android:textSize="17dp" />
+
+            <ImageView
+                android:id="@+id/iv_ubicacion"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_below="@id/nombreUsuarioVerReceta"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@id/usuarioImagenVerReceta"
+                android:src="@drawable/ubicacion" />
+
+            <TextView
+                android:id="@+id/tv_ubicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nombreUsuarioVerReceta"
+                android:layout_marginStart="7dp"
+                android:layout_toEndOf="@id/iv_ubicacion"
+                android:text="TextView" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="17dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:background="?android:attr/listDivider" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_reloj"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+
+                android:layout_marginTop="13dp"
+                android:src="@drawable/icono_reloj" />
+
+            <TextView
+                android:id="@+id/tv_tiempo_elaboracion"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/iv_reloj"
+                android:text="TextView" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Ingredientes"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/account_bnm_foreground" />
+
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente"
+                android:text="TextView"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_cantidad_ingrediente"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nombre_ingrediente"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente2"
+                android:text="TextView"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_cantidad_ingrediente2"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nombre_ingrediente2"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente3"
+                android:text="TextView"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_cantidad_ingrediente3"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nombre_ingrediente3"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente4"
+                android:text="TextView"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_cantidad_ingrediente4"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nombre_ingrediente4"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente5"
+                android:text="TextView"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/et_cantidad_ingrediente6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_cantidad_ingrediente5"
+                android:text="TextView"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/et_nombre_ingrediente6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_nombre_ingrediente5"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/et_cantidad_ingrediente6"
+                android:text="TextView"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_pasos"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+        <!--paso1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_numero_paso1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_cicle_number"
+                android:padding="5dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/tv_paso1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:gravity="center_vertical"
+                android:inputType="textPersonName"
+                android:text="@string/formulario_truco_descrp_truco" />
+        </LinearLayout>
+
+        <!--paso2-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_numero_paso2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_cicle_number"
+                android:padding="5dp"
+                android:text="2"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/tv_paso2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="7dp"
+                android:inputType="textPersonName"
+                android:text="@string/formulario_truco_descrp_truco" />
+
+        </LinearLayout>
+
+        <!-- paso3-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_numero_paso3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_cicle_number"
+                android:padding="5dp"
+                android:text="3"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/tv_paso3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="7dp"
+                android:inputType="textPersonName"
+                android:text="@string/formulario_truco_descrp_truco" />
+
+        </LinearLayout>
+
+        <!-- paso4-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_numero_paso4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_cicle_number"
+                android:padding="5dp"
+                android:text="2"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/tv_paso4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="7dp"
+                android:inputType="textPersonName"
+                android:text="@string/formulario_truco_descrp_truco" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

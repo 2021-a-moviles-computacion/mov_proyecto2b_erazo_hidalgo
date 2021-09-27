@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.R
+import com.ferrifrancis.cookpad.activities.VerReceta
 import com.ferrifrancis.cookpad.data.Data
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.google.firebase.firestore.ktx.firestore
@@ -52,7 +53,7 @@ class HomeRecyclerAdapter (
 
         //abrir actividad ver receta
        holder.cardView.setOnClickListener{
-            contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", receta))
+            contexto.startActivity(Intent(contexto, VerReceta::class.java).putExtra("receta", receta))
         }
         holder.chipAplauso.setOnCloseIconClickListener{
 
@@ -131,16 +132,7 @@ class HomeRecyclerAdapter (
 
 
         init {
-            /*
-            itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
-            }*/
-      /*      chipAplauso.setOnClickListener {
 
-                Log.i("home recycler adapter"," posicion item al dar clic en chip ${adapterPosition}")
-                aumentarEn1Reaccion(adapterPosition,0)
-                chipAplauso.setText(Data.listaDatos[adapterPosition].reaccionAplauso.toString());
-            }*/
             chipCorazon.setOnClickListener {
                 aumentarEn1Reaccion(adapterPosition,1)
                 chipCorazon.setText(Data.listaDatos[adapterPosition].reaccionAplauso.toString())
@@ -151,17 +143,10 @@ class HomeRecyclerAdapter (
                 popupMenu(it)
 
             }
-      /*      val cardView= itemView.card_view_home_receta
-            cardView.setOnClickListener {
-                contexto.startActivity(Intent(contexto, VerRecetaRecyclerAdapter::class.java).putExtra("receta", this.recetaList))
-            }*/
+
 
 
         }
-        private fun verReceta(position: Int){
-
-        }
-
 
         fun aumentarEn1Reaccion(indxDato: Int, tipoReaccion: Int) {
             //tipoReaccion 0-> aplauso, 1 -> corazon

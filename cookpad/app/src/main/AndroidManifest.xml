@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.CrearReceta"></activity>
-        <activity android:name=".activities.CrearTruco"></activity>
+        <activity android:name=".activities.CrearReceta"/>
+        <activity android:name=".activities.CrearTruco"/>
+        <activity android:name=".activities.VerReceta"/>
 
         <activity android:name=".adapter.VerRecetaRecyclerAdapter" />
         <activity android:name=".fragments.IngredientsFragment"

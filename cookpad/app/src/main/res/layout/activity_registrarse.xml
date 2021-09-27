@@ -10,13 +10,14 @@
     android:orientation="vertical"
     tools:context=".activities.RegistrarseActivity">
 
-        android:layout_gravity="center_horizontal"
+
     <TextView
         android:id="@+id/tv_registrarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:text="Registrar usuario"
+        android:layout_gravity="center_horizontal"
         android:textSize="20dp"
         android:textStyle="bold" />
 
