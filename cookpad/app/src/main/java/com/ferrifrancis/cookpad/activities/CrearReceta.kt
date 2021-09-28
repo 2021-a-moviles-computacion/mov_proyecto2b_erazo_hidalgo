@@ -25,10 +25,12 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_registrarse.*
 
 class CrearReceta : AppCompatActivity() {
     var usuario: UsuarioDTO?=null
-
+    private lateinit var listaReceta: ArrayList<RecetaDTO>
+    var Pos: Int = 0
     var receta: RecetaDTO?=null
     var uid_receta:String? =null
 
@@ -37,7 +39,7 @@ class CrearReceta : AppCompatActivity() {
     var storageRecetaImage: StorageReference? = null
 
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
-
+    var esFav: Int = 0
 
 
 
@@ -102,7 +104,9 @@ class CrearReceta : AppCompatActivity() {
 
 
 
+
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
        super.onActivityResult(requestCode, resultCode, data)
@@ -309,27 +313,7 @@ class CrearReceta : AppCompatActivity() {
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
     }
 
-    fun transaccion(){
-        val db = Firebase.firestore
-        val refCities =
-            db.collection("receta")
-                .document("BJ")
-        db.runTransaction {
-                transaction ->
-            val documentoActual = transaction.get(refCities)
-            val aplauso = documentoActual.getDouble("aplauso")
-            val corazon = documentoActual.getDouble("corazon")
-            if(aplauso !=null && corazon !=null){
-                val nuevaReaccionAplauso = aplauso+1
-                val nuevaReaccionCorazon = corazon+1
-                transaction.update(refCities, "reaccionAplauso", nuevaReaccionAplauso)
-                transaction.update(refCities, "reaccionCorazon", nuevaReaccionCorazon)
 
-            }
-        }
-            .addOnSuccessListener { Log.i("transaccion", "Transaccion completada") }
-            .addOnFailureListener{ Log.i("transaccion", "Error")}
-    }
 
 
 
@@ -438,6 +422,8 @@ class CrearReceta : AppCompatActivity() {
         startActivityForResult(intentExplicito,CODIGO_RESPUESTA_INTENT_EXPLICITO)
 
     }
+
+
 
 
 

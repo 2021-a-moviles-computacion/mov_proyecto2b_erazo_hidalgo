@@ -19,6 +19,7 @@ class SearchRecyclerAdapter (val recetaList: ArrayList<RecetaDTO>): RecyclerView
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val receta: RecetaDTO = this.recetaList[position]
         holder.tituloReceta.setText(receta.tituloReceta.toString())
+        holder.imagenReceta.setImageBitmap(receta.imageReceta)
     }
 
     override fun getItemCount(): Int
@@ -31,6 +32,7 @@ class SearchRecyclerAdapter (val recetaList: ArrayList<RecetaDTO>): RecyclerView
     ) : RecyclerView.ViewHolder(itemView) {
         //val imagenReceta = itemView.img_receta
         val tituloReceta = itemView.et_titulo_recetabuscar
+        val imagenReceta = itemView.img_truco
 
 
     }
