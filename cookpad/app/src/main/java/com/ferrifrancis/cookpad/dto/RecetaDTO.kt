@@ -9,7 +9,7 @@ class RecetaDTO(
     var uid_usuario:String?= null,
     var tituloReceta: String?= null,
     var descripcionReceta: String?= null,
-    var procedimientoReceta: String?= null,
+    var procedenciaReceta: String?= null,
     var comensales: Int?= null,
     var tiempoElaboracion: String?= null,
     var paso1: String?= null,
@@ -22,7 +22,7 @@ class RecetaDTO(
     var imageReceta: Bitmap? = null,
     var imageUsuario: Bitmap? = null,
 
-):Parcelable{
+    ):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -48,7 +48,7 @@ class RecetaDTO(
         parcel.writeString(uid_usuario)
         parcel.writeString(tituloReceta)
         parcel.writeString(descripcionReceta)
-        parcel.writeString(procedimientoReceta)
+        parcel.writeString(procedenciaReceta)
         parcel.writeValue(comensales)
         parcel.writeString(tiempoElaboracion)
         parcel.writeString(paso1)

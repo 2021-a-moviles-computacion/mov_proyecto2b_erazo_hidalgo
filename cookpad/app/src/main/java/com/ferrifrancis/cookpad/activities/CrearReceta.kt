@@ -3,8 +3,6 @@ package com.ferrifrancis.cookpad.activities
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
-import com.google.firebase.storage.ktx.storage
 import com.theartofdev.edmodo.cropper.CropImage
 
 class CrearReceta : AppCompatActivity() {
@@ -269,7 +266,7 @@ class CrearReceta : AppCompatActivity() {
             "uid_usuario" to objetoRecetaDTO.uid_usuario!!,
             "tituloReceta" to objetoRecetaDTO.tituloReceta!!,
             "descripcionReceta" to objetoRecetaDTO.descripcionReceta!!,
-            "procedencia" to objetoRecetaDTO.procedimientoReceta!!,
+            "procedencia" to objetoRecetaDTO.procedenciaReceta!!,
             "comensales" to objetoRecetaDTO.comensales!!,
             "tiempoElaboracion" to objetoRecetaDTO.tiempoElaboracion!!,
             "paso1" to objetoRecetaDTO.paso1!!,

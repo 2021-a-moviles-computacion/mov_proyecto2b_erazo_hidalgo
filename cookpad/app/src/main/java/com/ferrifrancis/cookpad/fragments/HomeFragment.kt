@@ -131,7 +131,7 @@ class HomeFragment : Fragment() {
                             val nombreReceta: String? = doc.document.get("tituloReceta").toString()
                             val uid_usuario: String? = doc.document.get("uid_usuario").toString()
                             val descripcionReceta: String? = doc.document.get("descripcionReceta").toString()
-                            val procedimientoReceta: String? = doc.document.get("procedimientoReceta").toString()
+                            val procedenciaReceta: String? = doc.document.get("procedencia").toString()
                             val comensales: Int? = doc.document.get("comensales").toString().toIntOrNull()
                             val tiempoElaboracion: String? = doc.document.get("tiempoElaboracion").toString()
                             val paso1: String? = doc.document.get("paso1").toString()
@@ -147,7 +147,7 @@ class HomeFragment : Fragment() {
                             val recetaObj = RecetaDTO(uid_receta = idReceta, tituloReceta = nombreReceta, nombreUsuarioAutor = nombreUsuario,
                                 uid_usuario = uid_usuario,descripcionReceta = descripcionReceta, comensales = comensales,paso1=paso1,paso2=paso2,
                                 paso3=paso3,paso4=paso4,reaccionAplauso = reaccionAplauso,reaccionCorazon = reaccionCorazon,
-                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion,
+                                imageReceta = null,procedenciaReceta = procedenciaReceta, tiempoElaboracion = tiempoElaboracion,
                                 imageUsuario=null )
 
                             cargarImagenYActualizaLista(recetaObj)

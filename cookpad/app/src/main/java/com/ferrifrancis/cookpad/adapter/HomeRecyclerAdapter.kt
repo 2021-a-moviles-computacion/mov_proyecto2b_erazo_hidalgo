@@ -37,7 +37,7 @@ class HomeRecyclerAdapter (
 
         //abrir actividad ver receta
        holder.cardView.setOnClickListener{
-            contexto.startActivity(Intent(contexto, VerReceta::class.java).putExtra("receta", receta.uid_receta))
+            contexto.startActivity(Intent(contexto, VerReceta::class.java).putExtra("receta", receta))
         }
 
         holder.chipAplauso.setOnCloseIconClickListener{
