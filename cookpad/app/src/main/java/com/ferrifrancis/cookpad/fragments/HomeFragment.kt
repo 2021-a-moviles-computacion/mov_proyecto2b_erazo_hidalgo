@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        eventChangeListener()
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
     {
         super.onViewCreated(itemView, savedInstanceState)
 
-
+        Log.i("firesotrage","onViewCreated")
         recyclerView = requireView().findViewById(R.id.rv_home)
         recyclerView.layoutManager = GridLayoutManager(activity,2)
         recyclerView.setHasFixedSize(true)
@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
           this.homeAdapter = HomeRecyclerAdapter(this.listaReceta, requireActivity())
           recyclerView.adapter = this.homeAdapter
 
-        eventChangeListener()
+
 
     }
 
@@ -76,29 +76,30 @@ class HomeFragment : Fragment() {
 
             nombreImg.getBytes(10024 * 10024)
                 .addOnSuccessListener {
-                    Log.i("firestorage", "cargar imagen receta success")
+                    //Log.i("firestorage", "cargar imagen receta success ${recetaObjeto.uid_receta}")
                     val bit = BitmapFactory.decodeByteArray(it, 0, it.size)
                     recetaObjeto.imageReceta = bit
+                    Log.i("firestorage","usuarioId: ${recetaObjeto.uid_receta} imagen receta${recetaObjeto.imageReceta}")
                     //this.listaReceta.add(recetaObjeto)
                     //homeAdapter.notifyDataSetChanged()
 
                     usuarioImg.getBytes(10024 * 10024)
                         .addOnSuccessListener {
-                            Log.i("firestorage", "cargar imagen usuario success")
-                            val bit = BitmapFactory.decodeByteArray(it, 0, it.size)
-                            recetaObjeto.imageUsuario = bit
+                            Log.i("firestorage", "cargar imagen usuario success ${recetaObjeto.uid_usuario}")
+                            val bit_usuario = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            recetaObjeto.imageUsuario = bit_usuario
                             this.listaReceta.add(recetaObjeto)
                             homeAdapter.notifyDataSetChanged()
-                            Log.i("firestorage", "se cargó imagen usuario, se actualizó lista")
+
                         }
                         .addOnFailureListener {
-                            Log.i("firestorage", "cargar imagen usuario NO success")
+                            Log.i("firestorage", "cargar imagen usuario NO success ${recetaObjeto.uid_usuario}")
                         }
 
-                    Log.i("firestorage", "se cargó imagen receta, se actualizó lista")
+
                 }
                 .addOnFailureListener {
-                    Log.i("firestorage", "cargar imagen receta NO success")
+                    Log.i("firestorage", "cargar imagen receta NO success ${recetaObjeto.uid_receta}")
                 }
 
 
@@ -111,6 +112,7 @@ class HomeFragment : Fragment() {
 
 
     private fun eventChangeListener() {
+        Log.i("firestorage","carga datos firestorage")
         db = FirebaseFirestore.getInstance()
         db.collection("receta")
             .addSnapshotListener(object: EventListener<QuerySnapshot>{
@@ -136,28 +138,23 @@ class HomeFragment : Fragment() {
                             val paso2: String? = doc.document.get("paso2").toString()
                             val paso3: String? = doc.document.get("paso3").toString()
                             val paso4: String? = doc.document.get("paso4").toString()
-                            val reaccionAplauso: Int? = doc.document.get("reaccionAplauso").toString().toIntOrNull()
-                            val reaccionCorazon: Int? = doc.document.get("reaccionCorazon").toString().toIntOrNull()
-
+                            val reaccionAplauso: Int? = doc.document.get("reaccionAplauso").toString().toDoubleOrNull()?.toInt()
+                            val reaccionCorazon: Int? = doc.document.get("reaccionCorazon").toString().toDoubleOrNull()?.toInt()
+                            //val reaccionCorazon: Any? = doc.document.get("reaccionCorazon")//.toString().toIntOrNull()
+                            //val reaccionAplauso = doc.document.get("reaccionAplauso")
 
 
                             val recetaObj = RecetaDTO(uid_receta = idReceta, tituloReceta = nombreReceta, nombreUsuarioAutor = nombreUsuario,
                                 uid_usuario = uid_usuario,descripcionReceta = descripcionReceta, comensales = comensales,paso1=paso1,paso2=paso2,
                                 paso3=paso3,paso4=paso4,reaccionAplauso = reaccionAplauso,reaccionCorazon = reaccionCorazon,
-                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion, imageUsuario=null )
+                                imageReceta = null,procedimientoReceta = procedimientoReceta, tiempoElaboracion = tiempoElaboracion,
+                                imageUsuario=null )
 
-                            //val receta: RecetaDTO =doc.document.toObject(RecetaDTO::class.java)
-                            //receta.imageReceta = receta.uid_receta?.let { cargarImagen(it) }
-                            //if(receta.imageReceta == null)
-                              //  Log.i("home","receta nulo")
-                           //listaReceta.add(recetaObj)
                             cargarImagenYActualizaLista(recetaObj)
 
                         }
                     }
-                    //homeAdapter.notifyDataSetChanged()
-                    //aqui acabó de cargar los documentos
-                    //cargarImagenYActualizaLista()
+
 
                 }
             })

@@ -37,7 +37,9 @@ class RecetaDTO(
         parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readString()
+        parcel.readString(),
+
+
     ) {
     }
 

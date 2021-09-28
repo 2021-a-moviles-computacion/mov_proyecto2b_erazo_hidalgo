@@ -22,24 +22,8 @@ import kotlinx.android.synthetic.main.layout_home_list_item.view.*
 class HomeRecyclerAdapter (
     val recetaList: ArrayList<RecetaDTO>,
     val contexto: Context
-
-
-
     ):RecyclerView.Adapter<HomeRecyclerAdapter.HomeViewHolder>()
 {
-
-    //private lateinit var  mListener: onItemClickListener
-
-    interface onItemClickListener{
-
-        fun onItemClick(position: Int)
-
-    }
-
-    fun setOnItemClickListener(listener: onItemClickListener)
-    {
-       // mListener = listener
-    }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         
@@ -53,8 +37,9 @@ class HomeRecyclerAdapter (
 
         //abrir actividad ver receta
        holder.cardView.setOnClickListener{
-            contexto.startActivity(Intent(contexto, VerReceta::class.java).putExtra("receta", receta))
+            contexto.startActivity(Intent(contexto, VerReceta::class.java).putExtra("receta", receta.uid_receta))
         }
+
         holder.chipAplauso.setOnCloseIconClickListener{
 
                 val db = Firebase.firestore

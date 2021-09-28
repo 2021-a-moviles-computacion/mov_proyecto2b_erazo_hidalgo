@@ -105,7 +105,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/iv_reloj"
                 android:text="TextView" />
@@ -136,7 +136,7 @@
 
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/tv_comensales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
@@ -374,7 +374,7 @@
                 android:layout_marginTop="5dp"
                 android:background="@drawable/custom_cicle_number"
                 android:padding="5dp"
-                android:text="2"
+                android:text="4"
                 android:textAlignment="center"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"

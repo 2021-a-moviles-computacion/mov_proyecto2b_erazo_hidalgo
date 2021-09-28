@@ -94,7 +94,7 @@ class CrearReceta : AppCompatActivity() {
         imagenReceta.setOnClickListener {
          //   uploadImage()
 
-            uploadImage(this.uid_receta)
+
             CropImage.activity()
                 .setAspectRatio(2,1)
                 .start(this@CrearReceta)
@@ -233,7 +233,7 @@ class CrearReceta : AppCompatActivity() {
 
         val tituloReceta= findViewById<EditText>(R.id.et_titulo_truco1)
         val descripcionReceta = findViewById<EditText>(R.id.et_descripcion_receta)
-        val procedimientoReceta = findViewById<EditText>(R.id.et_descripcion_receta)
+        val procedenciaReceta = findViewById<EditText>(R.id.et_procedencia_receta)
         val comensales = findViewById<EditText>(R.id.ed_comensales_receta)
         val tiempoElaboracion = findViewById<EditText>(R.id.et_tiempo_receta)
         val paso1 = findViewById<EditText>(R.id.et_descripcion_paso1)
@@ -251,7 +251,7 @@ class CrearReceta : AppCompatActivity() {
             usuario!!.uid.toString(),
             tituloReceta.text.toString(),
             descripcionReceta.text.toString(),
-            procedimientoReceta.text.toString(),
+            procedenciaReceta.text.toString(),
             comensales.text.toString().toInt(),
             tiempoElaboracion.text.toString(),
             paso1.text.toString(),
@@ -269,7 +269,7 @@ class CrearReceta : AppCompatActivity() {
             "uid_usuario" to objetoRecetaDTO.uid_usuario!!,
             "tituloReceta" to objetoRecetaDTO.tituloReceta!!,
             "descripcionReceta" to objetoRecetaDTO.descripcionReceta!!,
-            "procedimientoReceta" to objetoRecetaDTO.procedimientoReceta!!,
+            "procedencia" to objetoRecetaDTO.procedimientoReceta!!,
             "comensales" to objetoRecetaDTO.comensales!!,
             "tiempoElaboracion" to objetoRecetaDTO.tiempoElaboracion!!,
             "paso1" to objetoRecetaDTO.paso1!!,
@@ -359,7 +359,7 @@ class CrearReceta : AppCompatActivity() {
             "ingrediente1" to ingrediente1 ,
             "cantidad2" to cantidad2,
             "ingrediente2" to ingrediente2 ,
-            "cantida3" to cantidad3,
+            "cantidad3" to cantidad3,
             "ingrediente3" to ingrediente3 ,
             "cantidad4" to cantidad4,
             "ingrediente4" to ingrediente4,
