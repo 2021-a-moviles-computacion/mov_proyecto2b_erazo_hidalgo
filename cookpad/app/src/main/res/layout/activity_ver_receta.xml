@@ -338,7 +338,7 @@
                         android:id="@+id/tv_paso1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:inputType="textPersonName"
                         android:text="@string/formulario_truco_descrp_truco"
@@ -370,7 +370,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="7dp"
+                        android:layout_marginStart="10dp"
                         android:inputType="textPersonName"
                         android:text="@string/formulario_truco_descrp_truco"
                         android:textSize="23sp" />
@@ -403,7 +403,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="7dp"
+                        android:layout_marginStart="10dp"
                         android:inputType="textPersonName"
                         android:text="@string/formulario_truco_descrp_truco"
                         android:textSize="23sp" />
@@ -435,7 +435,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="7dp"
+                        android:layout_marginStart="10dp"
                         android:inputType="textPersonName"
                         android:text="@string/formulario_truco_descrp_truco"
                         android:textSize="23sp" />
