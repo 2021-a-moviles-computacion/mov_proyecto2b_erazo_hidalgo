@@ -85,6 +85,8 @@ class CrearTruco : AppCompatActivity() {
 
 
 
+
+
     }
 /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

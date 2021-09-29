@@ -10,19 +10,36 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <!--Sección DESCRIPCIÓN (título, comensales, tiempo, foto)-->
+
+        <!--Sección INGREDIENTE-->
+
         <androidx.cardview.widget.CardView
-            android:layout_width="437dp"
-            android:layout_height="771dp"
+            android:layout_width="377dp"
+            android:layout_height="728dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="2dp"
             app:cardElevation="20dp"
             app:cardPreventCornerOverlap="false">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="743dp"
+                android:layout_width="377dp"
+                android:layout_height="720dp"
                 android:orientation="vertical"
                 tools:context=".activities.CrearReceta">
+
+                <ImageView
+                    android:id="@+id/imagen_receta"
+                    android:layout_width="374dp"
+                    android:layout_height="154dp"
+                    android:layout_marginTop="24dp"
+                    android:adjustViewBounds="true"
+                    android:padding="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/fondo_plato_comida"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.432"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/et_titulo_truco1"
@@ -110,19 +127,6 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/tv_comenales_receta" />
 
-                <ImageView
-                    android:id="@+id/imagen_receta"
-                    android:layout_width="374dp"
-                    android:layout_height="154dp"
-                    android:layout_marginTop="24dp"
-                    android:adjustViewBounds="true"
-                    android:padding="0dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/fondo_plato_comida"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.432"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
                 <!-- android:background="@drawable/custom_input"-->
                 <EditText
                     android:id="@+id/ed_comensales_receta"
@@ -144,678 +148,650 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!--Sección INGREDIENTE-->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_ingrediente"
-            android:layout_width="match_parent"
-            android:layout_height="560dp"
+            android:layout_width="373dp"
+            android:layout_height="576dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="2dp"
             app:cardElevation="20dp"
             app:cardPreventCornerOverlap="false">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="549dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_ingredientes"
-                    android:layout_width="153dp"
-                    android:layout_height="54dp"
-                    android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
-                    android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"
-                    android:padding="15dp"
-                    android:text="@string/str_ingrediente"
-                    android:textColor="@color/colorTituloReceta"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
+                    android:layout_width="518dp"
+                    android:layout_height="561dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente1"
-                            android:layout_width="match_parent"
-                            android:layout_height="37dp"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_1"
-                        android:layout_width="300dp"
+                    <TextView
+                        android:id="@+id/tv_ingredientes"
+                        android:layout_width="153dp"
                         android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu2_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
+                        android:layout_marginTop="@dimen/cardview_compat_inset_shadow"
+                        android:layout_marginBottom="@dimen/cardview_compat_inset_shadow"
+                        android:padding="15dp"
+                        android:text="@string/str_ingrediente"
+                        android:textColor="@color/colorTituloReceta"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_2"
-                        android:layout_width="300dp"
-                        android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu2_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_3"
-                        android:layout_width="300dp"
-                        android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu2_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <!--caja de texto 1 y opción mini menu-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_4"
-                        android:layout_width="300dp"
-                        android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu2_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente5"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_5"
-                        android:layout_width="300dp"
-                        android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-                <!--caja de texto 2 y opción mini menu-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="73dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/tv_cantidadIngrediente6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:inputType="textPersonName" />
-                    </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/et_ingrediente_6"
-                        android:layout_width="300dp"
-                        android:layout_height="54dp"
-                        android:layout_below="@id/tv_ingredientes"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/custom_input"
-                        android:ems="10"
-                        android:hint="@string/formulario_receta_ingrediente_dscr"
-                        android:inputType="textPersonName"
-                        android:padding="10dp" />
-
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu2_secc_ingr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <!--número y menú de 4 rayas-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tv_numero_paso"
-                            android:layout_width="24dp"
-                            android:layout_height="wrap_content"
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente1"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/et_ingrediente_1"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
                             android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/custom_cicle_number"
-                            android:padding="6dp"
-                            android:text="2"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
+                            android:inputType="textPersonName"
+                            android:padding="10dp" />
 
                         <ImageView
-                            android:id="@+id/stripe_menu"
+                            android:id="@+id/img_three_dots_menu2_secc_ingr"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_numero_paso"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="0dp"
                             android:adjustViewBounds="true"
                             android:padding="0dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_striped_patterns" />
+                            android:src="@drawable/ic_three_dots_vertical" />
                     </LinearLayout>
-                    <!--descripción paso + imagen-->
+
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente2"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
 
                         <EditText
-                            android:id="@+id/et_descripcion_paso2"
-                            android:layout_width="363dp"
-                            android:layout_height="93dp"
+                            android:id="@+id/et_ingrediente_2"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
                             android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
                             android:background="@drawable/custom_input"
                             android:ems="10"
-                            android:hint="@string/formulario_receta_paso_decrp"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
                             android:inputType="textPersonName"
-                            android:padding="10dp"
+                            android:padding="10dp" />
 
-                            />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/img_paso"
-                            android:layout_width="90dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="10dp"
-                            android:layout_marginBottom="10dp"
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu2_secc_ingr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
+                            android:padding="0dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/camara_fondo_gris"
-                            app:shapeAppearanceOverlay="@style/roundimageview" />
+                            android:src="@drawable/ic_three_dots_vertical" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu_secc_pasos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
 
-            </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente3"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/et_ingrediente_3"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
+                            android:inputType="textPersonName"
+                            android:padding="10dp" />
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu2_secc_ingr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_three_dots_vertical" />
+                    </LinearLayout>
+
+                    <!--caja de texto 1 y opción mini menu-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente4"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/et_ingrediente_4"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
+                            android:inputType="textPersonName"
+                            android:padding="10dp" />
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu2_secc_ingr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_three_dots_vertical" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente5"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/et_ingrediente_5"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
+                            android:inputType="textPersonName"
+                            android:padding="10dp" />
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu_secc_ingr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_three_dots_vertical" />
+                    </LinearLayout>
+                    <!--caja de texto 2 y opción mini menu-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="100dp"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/tv_cantidadIngrediente6"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:inputType="textPersonName" />
+                        </LinearLayout>
+
+                        <EditText
+                            android:id="@+id/et_ingrediente_6"
+                            android:layout_width="230dp"
+                            android:layout_height="54dp"
+                            android:layout_below="@id/tv_ingredientes"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/custom_input"
+                            android:ems="10"
+                            android:hint="@string/formulario_receta_ingrediente_dscr"
+                            android:inputType="textPersonName"
+                            android:padding="10dp" />
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu2_secc_ingr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_three_dots_vertical" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.cardview.widget.CardView>
 
         <!-- Sección PASOS-->
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardview_pasos"
-            android:layout_width="615dp"
-            android:layout_height="968dp"
+            android:layout_width="377dp"
+            android:layout_height="567dp"
             android:layout_marginBottom="5dp"
             app:cardCornerRadius="2dp"
             app:cardElevation="20dp"
             app:cardPreventCornerOverlap="false">
             <!--el más grande (contiene a todos)-->
-            <LinearLayout
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_pasos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="0dp"
-                    android:padding="6dp"
-                    android:text="@string/str_pasos"
-                    android:textColor="@color/colorTituloReceta"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="215dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <!--número y menú de 4 rayas-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    android:layout_height="554dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_pasos"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="0dp"
+                        android:padding="6dp"
+                        android:text="@string/str_pasos"
+                        android:textColor="@color/colorTituloReceta"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="111dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_numero_paso"
-                            android:layout_width="24dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/custom_cicle_number"
-                            android:padding="6dp"
-                            android:text="1"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/stripe_menu"
+                        android:orientation="horizontal">
+                        <!--número y menú de 4 rayas-->
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_numero_paso"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="0dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_numero_paso"
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/custom_cicle_number"
+                                android:padding="6dp"
+                                android:text="1"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/stripe_menu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_numero_paso"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginBottom="0dp"
+                                android:adjustViewBounds="true"
+                                android:padding="0dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_striped_patterns" />
+                        </LinearLayout>
+                        <!--descripción paso + imagen-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/et_descripcion_paso1"
+                                android:layout_width="299dp"
+                                android:layout_height="93dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:hint="@string/formulario_receta_paso_decrp"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu_secc_pasos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:padding="0dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_striped_patterns" />
-                    </LinearLayout>
-                    <!--descripción paso + imagen-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
+                            android:src="@drawable/ic_three_dots_vertical" />
 
-                        <EditText
-                            android:id="@+id/et_descripcion_paso1"
-                            android:layout_width="363dp"
-                            android:layout_height="93dp"
-                            android:layout_marginLeft="15dp"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:hint="@string/formulario_receta_paso_decrp"
-                            android:inputType="textPersonName"
-                            android:padding="10dp"
-
-                            />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/img_paso"
-                            android:layout_width="90dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/camara_fondo_gris"
-                            app:shapeAppearanceOverlay="@style/roundimageview" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu_secc_pasos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <!--número y menú de 4 rayas-->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="111dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_numero_paso"
-                            android:layout_width="24dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/custom_cicle_number"
-                            android:padding="6dp"
-                            android:text="3"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/stripe_menu"
+                        android:orientation="horizontal">
+                        <!--número y menú de 4 rayas-->
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_numero_paso"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="0dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_numero_paso"
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/custom_cicle_number"
+                                android:padding="6dp"
+                                android:text="2"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/stripe_menu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_numero_paso"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginBottom="0dp"
+                                android:adjustViewBounds="true"
+                                android:padding="0dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_striped_patterns" />
+                        </LinearLayout>
+                        <!--descripción paso + imagen-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/et_descripcion_paso2"
+                                android:layout_width="299dp"
+                                android:layout_height="93dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:hint="@string/formulario_receta_paso_decrp"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu_secc_pasos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:padding="0dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_striped_patterns" />
-                    </LinearLayout>
-                    <!--descripción paso + imagen-->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
+                            android:src="@drawable/ic_three_dots_vertical" />
 
-                        <EditText
-                            android:id="@+id/et_descripcion_paso3"
-                            android:layout_width="363dp"
-                            android:layout_height="93dp"
-                            android:layout_marginLeft="15dp"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:hint="@string/formulario_receta_paso_decrp"
-                            android:inputType="textPersonName"
-                            android:padding="10dp"
-
-                            />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/img_paso"
-                            android:layout_width="90dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/camara_fondo_gris"
-                            app:shapeAppearanceOverlay="@style/roundimageview" />
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu_secc_pasos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
-                </LinearLayout>
-
-                <!--para el (menú 4 rayas + número), descripción, menú 3 pts-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <!--número y menú de 4 rayas-->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="111dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/tv_numero_paso"
-                            android:layout_width="24dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/custom_cicle_number"
-                            android:padding="6dp"
-                            android:text="4"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/stripe_menu"
+                        android:orientation="horizontal">
+                        <!--número y menú de 4 rayas-->
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tv_numero_paso"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginTop="7dp"
-                            android:layout_marginBottom="0dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_numero_paso"
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/custom_cicle_number"
+                                android:padding="6dp"
+                                android:text="3"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/stripe_menu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_numero_paso"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginBottom="0dp"
+                                android:adjustViewBounds="true"
+                                android:padding="0dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_striped_patterns" />
+                        </LinearLayout>
+                        <!--descripción paso + imagen-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/et_descripcion_paso3"
+                                android:layout_width="299dp"
+                                android:layout_height="93dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:hint="@string/formulario_receta_paso_decrp"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu_secc_pasos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
                             android:padding="0dp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_striped_patterns" />
+                            android:src="@drawable/ic_three_dots_vertical" />
                     </LinearLayout>
-                    <!--descripción paso + imagen-->
+
+                    <!--para el (menú 4 rayas + número), descripción, menú 3 pts-->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="111dp"
                         android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/et_descripcion_paso4"
-                            android:layout_width="363dp"
-                            android:layout_height="93dp"
-                            android:layout_marginLeft="15dp"
-                            android:background="@drawable/custom_input"
-                            android:ems="10"
-                            android:hint="@string/formulario_receta_paso_decrp"
-                            android:inputType="textPersonName"
-                            android:padding="10dp"
-
-                            />
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/img_paso"
-                            android:layout_width="90dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="10dp"
+                        android:orientation="horizontal">
+                        <!--número y menú de 4 rayas-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
-                            android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/camara_fondo_gris"
-                            app:shapeAppearanceOverlay="@style/roundimageview" />
-                    </LinearLayout>
+                            android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/img_three_dots_menu_secc_pasos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:padding="0dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_three_dots_vertical" />
+                            <TextView
+                                android:id="@+id/tv_numero_paso"
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/custom_cicle_number"
+                                android:padding="6dp"
+                                android:text="4"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="18dp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/stripe_menu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_numero_paso"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginBottom="0dp"
+                                android:adjustViewBounds="true"
+                                android:padding="0dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_striped_patterns" />
+                        </LinearLayout>
+                        <!--descripción paso + imagen-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/et_descripcion_paso4"
+                                android:layout_width="299dp"
+                                android:layout_height="93dp"
+                                android:layout_marginLeft="15dp"
+                                android:background="@drawable/custom_input"
+                                android:ems="10"
+                                android:hint="@string/formulario_receta_paso_decrp"
+                                android:inputType="textPersonName"
+                                android:padding="10dp"
+
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/img_three_dots_menu_secc_pasos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="0dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_three_dots_vertical" />
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="377dp"
+            android:layout_height="70dp">
 
-            <Button
-                android:id="@+id/btn_guardar_receta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#BFBBBB"
-                android:text="Guardar"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="381dp"
+                android:layout_height="108dp"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_publicar_recetas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Publicar Receta"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                <Button
+                    android:id="@+id/btn_guardar_receta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="#FF9800"
+                    android:text="Guardar"
+                    android:textAllCaps="false"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="36dp">
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </ScrollView>

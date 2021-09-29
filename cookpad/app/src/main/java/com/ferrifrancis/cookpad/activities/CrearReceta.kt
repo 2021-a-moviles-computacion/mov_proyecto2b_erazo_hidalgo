@@ -25,6 +25,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.theartofdev.edmodo.cropper.CropImage
+import kotlinx.android.synthetic.main.activity_crear_receta.*
 import kotlinx.android.synthetic.main.activity_registrarse.*
 
 class CrearReceta : AppCompatActivity() {
@@ -80,13 +81,49 @@ class CrearReceta : AppCompatActivity() {
         dotMenuPasos.setOnClickListener {
             setPopupMenuPaso(dotMenuPasos)
         }
+        val tituloReceta= findViewById<EditText>(R.id.et_titulo_truco1)
+        val descripcionReceta = findViewById<EditText>(R.id.et_descripcion_receta)
+        val procedenciaReceta = findViewById<EditText>(R.id.et_procedencia_receta)
+        val comensales = findViewById<EditText>(R.id.ed_comensales_receta)
+        val tiempoElaboracion = findViewById<EditText>(R.id.et_tiempo_receta)
+        val paso1 = findViewById<EditText>(R.id.et_descripcion_paso1)
+        val paso2 = findViewById<EditText>(R.id.et_descripcion_paso2)
+        val paso3 = findViewById<EditText>(R.id.et_descripcion_paso3)
+        val paso4 = findViewById<EditText>(R.id.et_descripcion_paso4)
+        val Raplauso= findViewById<Chip>(R.id.chip_aplauso)
+        val Rcorazon= findViewById<Chip>(R.id.chip_corazon)
+        val imagen= findViewById<ImageView>(R.id.img_truco)
+
 
         val btnGuardarReceta = findViewById<Button>(R.id.btn_guardar_receta)
+    //    btnGuardarReceta.isEnabled= (
+
+
+    //            )
         btnGuardarReceta.setOnClickListener {
-            crearReceta()
+            if(
+
+                tituloReceta.text.toString().isNotEmpty() &&
+                descripcionReceta.text.toString().isNotEmpty()&&
+                procedenciaReceta.text.toString().isNotEmpty()&&
+                comensales.text.toString().isNotEmpty()&&
+                tiempoElaboracion.text.toString().isNotEmpty()&&
+                paso1.text.toString().isNotEmpty()&&
+                paso2.text.toString().isNotEmpty()&&
+                paso3.text.toString().isNotEmpty()&&
+                paso4.text.toString().isNotEmpty()
+            //  imagen.toString().isNotEmpty())
+            )
+            {
+                Log.i("receta", "Entro if")
+                crearReceta()
+
+            }else{
+                Log.i("receta", "Entro else")
+                Toast.makeText(this, "Llene de manera correcta el formulario", Toast.LENGTH_LONG).show()
+            }
 
 
-            Toast.makeText(this,"Se ha guardado la receta", Toast.LENGTH_SHORT).show()
         }
 
         val imagenReceta = findViewById<ImageView>(R.id.imagen_receta)
@@ -247,6 +284,7 @@ class CrearReceta : AppCompatActivity() {
         val aplauso = 0
         val corazon = 0
 
+
         val objetoRecetaDTO = RecetaDTO(
             null,
             usuario!!.uid.toString(),
@@ -290,6 +328,7 @@ class CrearReceta : AppCompatActivity() {
                 crearIngredientes()
                 uploadImage(uid_receta)
                 limpiar()
+                Toast.makeText(this, "Receta creada exitosamente", Toast.LENGTH_LONG).show()
                 abrirActividadConParametros(MainActivity::class.java,usuario!!)
                 Log.i("firestore","Se creó receta")
             }
