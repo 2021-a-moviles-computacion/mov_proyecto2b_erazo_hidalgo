@@ -45,7 +45,7 @@ class RegistrarseActivity : AppCompatActivity(){
         auth = Firebase.auth
         setContentView(R.layout.activity_registrarse)
 
-        storageRecetaImage = FirebaseStorage.getInstance().reference.child("image_usuario")
+        storageRecetaImage = FirebaseStorage.getInstance().reference.child("image_usuario") // direccion de la carpeta
 
         val botonRegistrarse = findViewById<Button>(R.id.btn_registrarse)
         listaPaises = findViewById<Spinner>(R.id.spinner)
@@ -102,10 +102,13 @@ class RegistrarseActivity : AppCompatActivity(){
     //pone la imagen seleccionada en el imageview
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        //Si todo sale bien cuando salió de la app para elegir la imagen,
+        //entonces, guardo el path de la imagen del celular
+        //y la pongo en el img_usuario
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data!= null )
         {
             val result = CropImage.getActivityResult(data)
-            imageUri = result.uri
+            imageUri = result.uri // direccion de la imagen en el celular
             val imagenTruco= findViewById<ImageView>(R.id.img_usuario)
             imagenTruco.setImageURI(imageUri)
 

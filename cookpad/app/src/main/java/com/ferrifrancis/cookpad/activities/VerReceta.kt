@@ -27,6 +27,14 @@ class VerReceta : AppCompatActivity() {
 
         val receta = intent.getParcelableExtra<RecetaDTO>("receta")
 
+        val actionBar = getSupportActionBar()
+        if (actionBar != null)
+        {
+            actionBar.title=""
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setDisplayShowHomeEnabled(true)
+        }
+
         jalaIngredientesFirestore(receta?.uid_receta)
         seteaDatosReceta(receta)
 
@@ -41,6 +49,11 @@ class VerReceta : AppCompatActivity() {
 
 
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     fun jalaIngredientesFirestore(uidReceta: String?)

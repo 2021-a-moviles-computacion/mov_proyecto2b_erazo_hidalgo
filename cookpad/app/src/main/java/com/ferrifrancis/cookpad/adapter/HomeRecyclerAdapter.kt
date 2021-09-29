@@ -86,12 +86,11 @@ class HomeRecyclerAdapter(
                 }
             }
                 //si todo es correcto se suma
+                    //y se muestra visualmente
                 .addOnSuccessListener {
                     contadorAplauso = contadorAplauso?.plus(1)
                     holder.chipAplauso.setText(contadorAplauso.toString())
                     holder.chipAplauso.setEnabled(false);
-                    //crear la coleccion
-                    //jalar el id del usuario
                     Log.i("transaccion", "Transaccion completada")
                 }
                 .addOnFailureListener { Log.i("transaccion", "Error") }

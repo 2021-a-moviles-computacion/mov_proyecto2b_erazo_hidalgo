@@ -9,10 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.PopupMenu
-import android.widget.Toast
+import android.widget.*
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.ferrifrancis.cookpad.dto.TrucoDTO
@@ -37,6 +34,7 @@ class CrearTruco : AppCompatActivity() {
     var imageUri: Uri? = null
     var storageRecetaImage: StorageReference? = null
     val CODIGO_RESPUESTA_INTENT_EXPLICITO = 401
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crear_truco2)
@@ -52,7 +50,23 @@ class CrearTruco : AppCompatActivity() {
             actionBar.setDisplayShowHomeEnabled(true)
         }
 
+        val btnCrearTruco = findViewById<Button>(R.id.btn_crear_truco)
+        btnCrearTruco.setOnClickListener {
+            val titulo = findViewById<EditText>(R.id.et_titulo_truco).text.toString()
+            val truco = findViewById<EditText>(R.id.et_descripcion_truco).text.toString()
+            if(
+                titulo.isNotEmpty()&&
+                truco.isNotEmpty()
+            ){
+                crearTrucoFirestore()
+                abrirActividad(MainActivity::class.java)
+            }else{
+                Toast.makeText(this, "Llene de manera correcta el formulario", Toast.LENGTH_LONG).show()
+            }
 
+
+
+        }
 
         val imgBoton = findViewById<ImageView>(R.id.img_three_dots_menu2_truco)
         imgBoton.setOnClickListener {
@@ -60,6 +74,7 @@ class CrearTruco : AppCompatActivity() {
             popupMenu.inflate(R.menu.menu_add_paso)
             popupMenu.show()
         }
+
         val imagenTruco= findViewById<ImageView>(R.id.img_truco)
         imagenTruco.setOnClickListener{
             uploadImage(this.uid_truco)
@@ -71,7 +86,7 @@ class CrearTruco : AppCompatActivity() {
 
 
     }
-
+/*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId)
@@ -83,20 +98,19 @@ class CrearTruco : AppCompatActivity() {
             }
         }
 
-
-
         return super.onOptionsItemSelected(item)
     }
+    */
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
-
+/*
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_appbar_crear_receta, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
+*/
     fun crearTrucoFirestore()
     {
         val titulo = findViewById<EditText>(R.id.et_titulo_truco).text.toString()
@@ -127,6 +141,7 @@ class CrearTruco : AppCompatActivity() {
             .addOnSuccessListener {
                 this.uid_truco = it.id
                 uploadImage(uid_truco)
+                Toast.makeText(this, "Truco creado exitosamente", Toast.LENGTH_LONG).show()
                 abrirActividadConParametros(MainActivity::class.java,usuario!!)
                 Log.i("firestore","Se creó truco")
             }
