@@ -16,14 +16,30 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-46dp" />
 
+    <TextView
+        android:id="@+id/tituloVerReceta"
+        android:layout_width="202dp"
+        android:layout_height="40dp"
+        android:text="Recetas"
+        android:textSize="29sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/rv_home"
+        app:layout_constraintEnd_toEndOf="@+id/rv_home"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toStartOf="@+id/rv_verTruco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.762" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home"
-        android:layout_width="308dp"
-        android:layout_height="420dp"
+        android:layout_width="340dp"
+        android:layout_height="505dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.906" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

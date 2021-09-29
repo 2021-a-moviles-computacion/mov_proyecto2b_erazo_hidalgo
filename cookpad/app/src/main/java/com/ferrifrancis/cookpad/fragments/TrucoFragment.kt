@@ -28,6 +28,7 @@ class TrucoFragment: Fragment(){
     private lateinit var listaTruco: ArrayList<TrucoDTO>
     private lateinit var  db: FirebaseFirestore
     val PATH_IMAGE = "Image Truco/"
+    val PATH_IMAGE_USUARIO = "image_usuario/"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,15 +112,29 @@ class TrucoFragment: Fragment(){
 
             val referencia = Firebase.storage
             val nombreImg = referencia.reference.child(PATH_IMAGE+trucoObjeto.uid_truco+".jpg")
+            val usuarioImg = referencia.reference.child(PATH_IMAGE_USUARIO+trucoObjeto.idUsuario+".jpg")
 
             nombreImg.getBytes(10024 * 10024)
                 .addOnSuccessListener {
                     Log.i("home", "cargar imagen success")
                     val bit = BitmapFactory.decodeByteArray(it, 0, it.size)
                     trucoObjeto.imageTruco = bit
-                    this.listaTruco.add(trucoObjeto)
-                    homeAdapter.notifyDataSetChanged()
-                    Log.i("home", "se cargó imagen, se actualizó lista")
+                    //this.listaTruco.add(trucoObjeto)
+                    //homeAdapter.notifyDataSetChanged()
+                    //Log.i("home", "se cargó imagen, se actualizó lista")
+                    usuarioImg.getBytes(10024 * 10024)
+                        .addOnSuccessListener {
+                            Log.i("firestorage", "cargar imagen usuario success ${trucoObjeto.idUsuario}")
+                            val bit_usuario = BitmapFactory.decodeByteArray(it, 0, it.size)
+                            trucoObjeto.imageUsuario = bit_usuario
+                            this.listaTruco.add(trucoObjeto)
+                            homeAdapter.notifyDataSetChanged()
+
+                        }
+                        .addOnFailureListener {
+                            Log.i("firestorage", "cargar imagen usuario NO success ${trucoObjeto.idUsuario}")
+                        }
+
                 }
                 .addOnFailureListener {
                     Log.i("home", "cargar imagen NO success")

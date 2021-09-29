@@ -9,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ferrifrancis.cookpad.R
 import com.ferrifrancis.cookpad.activities.VerReceta
 import com.ferrifrancis.cookpad.data.Data
 import com.ferrifrancis.cookpad.dto.RecetaDTO
 import com.ferrifrancis.cookpad.dto.UsuarioDTO
+import com.google.android.material.chip.Chip
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,6 +36,8 @@ class HomeRecyclerAdapter(
 
         val receta: RecetaDTO = this.recetaList[position]
         //aunque parezca q es nulo no es nulo
+
+        val ohla: Chip = holder.chipAplauso
 
         holder.imagenReceta.setImageBitmap(receta!!.imageReceta)
         holder.tituloReceta.setText(receta!!.tituloReceta)
@@ -85,7 +89,7 @@ class HomeRecyclerAdapter(
                 .addOnSuccessListener {
                     contadorAplauso = contadorAplauso?.plus(1)
                     holder.chipAplauso.setText(contadorAplauso.toString())
-                    //  holder.chipAplauso.setEnabled(false);
+                    holder.chipAplauso.setEnabled(false);
                     //crear la coleccion
                     //jalar el id del usuario
                     Log.i("transaccion", "Transaccion completada")
@@ -120,12 +124,15 @@ class HomeRecyclerAdapter(
                 }
             }
                 .addOnSuccessListener {
-                    val uidUsuario=setearUsuarioFirebase()
+
+                    //crearColeccionReaccionAplauso(receta)
+
                     contadorCorazon = contadorCorazon?.plus(1)
+
                     holder.chipCorazon.setText(contadorCorazon.toString())
-                    db.collection("reaccion_aplauso")
-                    //  holder.chipCorazon.setEnabled(false);
-                    Log.i("transaccion", "Transaccion completada")
+
+                    holder.chipCorazon.setEnabled(false);
+                    Log.i("transaccion", "Transaccion completadaaaaaa")
                 }
                 .addOnFailureListener { Log.i("transaccion", "Error") }
 
@@ -134,6 +141,23 @@ class HomeRecyclerAdapter(
 
     }
 
+    fun cargaDocReaccionAplauso(receta: RecetaDTO?, chip: Chip)
+    {
+        val db = Firebase.firestore
+        val docRef = db.collection("reaccion_aplauso").document(receta?.uid_usuario!!)
+
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -147,32 +171,28 @@ class HomeRecyclerAdapter(
         return this.recetaList.size
     }
 
-    fun setearUsuarioFirebase(): String?
+
+    fun crearColeccionReaccionAplauso(receta: RecetaDTO?)
     {
-        val instanciaAuth = FirebaseAuth.getInstance()//usuario que actualmente estalogead
-        val usuarioLocal = instanciaAuth.currentUser
-        var uidUsuario: String? = null
-        if(usuarioLocal?.email != null)
-        {
+        val db = Firebase.firestore
 
-                val db = Firebase.firestore
-                val referencia = db. collection("usuario") //de la coleccin usuario
-                    .document(usuarioLocal.email.toString()) //deme el doc con este email
+        if(receta != null) {
+            val docData = hashMapOf(
+                "uidReceta" to receta.uid_receta
+            )
 
-                referencia.get()
+            if (receta.uid_usuario != null) {
+                db.collection("reaccion_aplauso").document(receta.uid_usuario!!).set(docData)
                     .addOnSuccessListener {
-                        //val usuarioCargado = it.toObject(UsuarioDTO::class.java)
-                        uidUsuario = it.get("uid").toString()
-                        Log.i("firebase-firestore", "uID USUARIO${it.get("uid")}")
-
+                        Log.i("firestore", "reaccion aplauso registrada")
                     }
                     .addOnFailureListener {
-                        Log.i("firebase-firestore","Falló cargar usuario")
+                        Log.i("firestore", "Error, reaccion aplauso NO  registrada")
                     }
-
-
+            } else {
+                Log.i("firestore", "usuario nulo, no se registro reaccion aplauso")
+            }
         }
-        return uidUsuario
     }
 
     class HomeViewHolder constructor(

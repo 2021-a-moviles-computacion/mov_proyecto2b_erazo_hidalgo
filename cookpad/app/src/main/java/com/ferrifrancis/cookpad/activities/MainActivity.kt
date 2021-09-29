@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.ic_home -> {replaceFragment(homeFragment)
+                R.id.ic_receta -> {replaceFragment(homeFragment)
                     Log.i("fragment","selecciono icono home")}
                 R.id.ic_search -> replaceFragment(searchFragment)
                 R.id.ic_add -> replaceFragment(addFragment)
                 R.id.ic_message -> replaceFragment(messageFragment)
-                R.id.ic_account -> replaceFragment(trucoFragment)
+                R.id.ic_truco -> replaceFragment(trucoFragment)
             }
             true
         }

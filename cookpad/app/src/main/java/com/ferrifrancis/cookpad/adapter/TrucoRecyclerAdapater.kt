@@ -31,7 +31,7 @@ class TrucoRecyclerAdapater(
         holder.imagenTruco.setImageBitmap(receta.imageTruco)
         holder.tituloTruco.setText(receta.tituloTruco)
         holder.nombreAutorTruco.setText(receta.nombreUsuarioAutor)
-
+        holder.imagenUsuario.setImageBitmap(receta.imageUsuario)
     }
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -53,18 +53,7 @@ class TrucoRecyclerAdapater(
         val tituloTruco= itemView.et_titulo_truco1
         val nombreAutorTruco= itemView.tv_nombre_autor_truco
         val imagenTruco = itemView.img_ver_truco
-
-
-        init {
-
-
-
-        }
-
-
-
-
-
+        val imagenUsuario =itemView.img_usuario_truco
 
 
 

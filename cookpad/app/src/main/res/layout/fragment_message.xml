@@ -7,6 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".fragments.MessageFragment">
 
+    <TextView
+        android:id="@+id/tituloMensajes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensajes"
+        android:textSize="29sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/rv_message_frag_mess"
+        app:layout_constraintEnd_toEndOf="@+id/rv_message_frag_mess"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.641" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_message_frag_mess"
         android:layout_width="match_parent"

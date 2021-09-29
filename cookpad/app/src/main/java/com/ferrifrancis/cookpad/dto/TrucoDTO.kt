@@ -10,7 +10,8 @@ class TrucoDTO(
     var descripcionTruco: String?=null,
     var idUsuario: String?=null,
     var nombreUsuarioAutor: String?= null,
-    var imageTruco: Bitmap? = null
+    var imageTruco: Bitmap? = null,
+    var imageUsuario: Bitmap? = null
 
 ):Parcelable {
     constructor(parcel: Parcel) : this(
